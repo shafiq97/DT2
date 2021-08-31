@@ -2,7 +2,7 @@
 	session_start(); // Starting Session
 
     if (isset($_POST['doc_submit'])) {
-        include "C:\\xampp\htdocs\DTS2\includes\connect.php";
+        include '../../includes/connect.php';
 
         // Get all data from form
         $doc_name = $_POST['doc_name'];
@@ -20,7 +20,7 @@
         $owner = $_POST['owner'];
 
         //file handling
-		/*$pdfname = $doc_name.".pdf";  
+		    /*$pdfname = $doc_name.".pdf";  
         $temp_name  = $_FILES['file']['tmp_name'];
         echo $pdfname;
 

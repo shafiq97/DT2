@@ -53,8 +53,6 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css">
     
-
-
     <!-- Custom styles for this page -->
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.6/css/responsive.dataTables.min.css">
@@ -237,7 +235,7 @@
                                     </div>
                                     <div>
                                         <?php 
-                                            include "C:\\xampp\htdocs\DTS2\includes\connect.php";
+                                            include '../../includes/connect.php';
                                             $query6 = "SELECT * FROM documents WHERE (doc_responsibility = '".$_SESSION['name']."') AND (doc_status = 'Pending')";
                                             $result6 = mysqli_query($conn,$query6);
                                             echo"<div class='small text-gray-500'> ".date('D\, d-M-Y')."</div>";
@@ -338,7 +336,7 @@
                                 <table class="table table-bordered hover" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Doc ID</th>
+                                            <!-- <th>Doc ID</th> -->
                                             <th>Doc Name</th>
                                             <th>Sender</th>
                                             <th>Assignee</th>
@@ -352,7 +350,7 @@
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Doc ID</th>
+                                            <!-- <th>Doc ID</th> -->
                                             <th>Doc Name</th>
                                             <th>Sender</th>
                                             <th>Assignee</th>
@@ -367,7 +365,7 @@
 
                                     <tbody>
                                         <?php 
-                                            include "C:\\xampp\htdocs\DTS2\includes\connect.php";
+                                            include '../../includes/connect.php';
 
                                             // SQL query to fetch information of registerd users and finds user match.
                                             $currentName = $_SESSION["name"];
@@ -386,7 +384,7 @@
                                               
                                                 echo "<tr>";
                                                 echo "<form method='post' target='_blank' action='track.php'>";
-                                                echo "<td name=doc_id>" . $row['id'] . "</td>";
+                                                // echo "<td name=doc_id>" . $row['id'] . "</td>";
                                                 echo "<td name='doc_name'>" . $row['doc_name'] . "</td>";
                                                 echo "<td name='doc_sender'>" . $row['doc_sender'] . "</td>";
                                                 echo "<td>". $row['doc_responsibility'] ."</td>";
@@ -440,7 +438,7 @@
 
                                                                         <div class='px-5 pb-3'>
                                                                             <Label>Owner</label>";
-                                                                            include "C:\\xampp\htdocs\DTS2\includes\connect.php";
+                                                                            include '../../includes/connect.php';
                                                                             // SQL query to fetch information of registerd users and finds user match.
                                                                             $query5 = "SELECT * FROM users WHERE role_name = 'owner'";
                                                                             $result5 = mysqli_query($conn,$query5);
@@ -472,7 +470,7 @@
                                                                         echo"<div class='px-5 pb-3'>
                                                                             <Label>Assignee</label>";
                                                                              
-                                                                                include "C:\\xampp\htdocs\DTS2\includes\connect.php";
+                                                                                include '../../includes/connect.php';
 
                                                                                 // SQL query to fetch information of registerd users and finds user match.
                                                                                 $query2 = "SELECT * FROM users WHERE (role_name != 'admin' || 'Admin')";
@@ -728,11 +726,11 @@
         //var tbl = $('#dataTable');
         $(document).ready(function() {
             
-        // Setup - add a text input to each footer cell
+            // Setup - add a text input to each footer cell
             $('#dataTable thead tr').clone(true).appendTo( '#dataTable thead' );
 
             $('#dataTable thead tr:eq(0) th').each( function (i){
-                if(i>6){
+                if(i>5){
                     $(this).html( '' );
                 }
 
@@ -748,7 +746,7 @@
                         }
                     });
                 }
-            });   
+            });
 
             $('#dataTable').DataTable().destroy();
      
@@ -778,7 +776,7 @@
 
             $('#dataTable').DataTable({
                 "order": [[ 3, "asc" ]],
-                "pageLength": 50,
+                "pageLength": 10,
                 dom: 'Bfrtip',
                 buttons: [
                     {
@@ -836,7 +834,7 @@
         $error = "No name entered";
       }
       else{
-        include "C:\\xampp\htdocs\DTS2\includes\connect.php";
+        include '../../includes/connect.php';
         // Define $username and $password
         $id             = $_POST['id'];
         $sender         = $_POST['sender'];

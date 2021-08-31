@@ -3,7 +3,7 @@
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
     session_start();
-    include "/Applications/XAMPP/xamppfiles/htdocs/DTS2/includes/connect.php";
+    include '../../includes/connect.php';
     //echo $_SESSION['name'];
     $name = $_SESSION['name'];
 
@@ -128,9 +128,27 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <form action="report.php" method="post">
                         <div class="bg-light py-2 collapse-inner rounded">
-                            <button class="btn collapse-item" type="submit" name="month">Received by this month</button>
-                            <button class="btn collapse-item" type="submit" name="year">Received by this year</button>
-                            <button class="btn collapse-item" type="submit" name="assignee">Recevied by assignee</button>
+                            <button class="btn collapse-item" type="submit" name="month">Received this month</button>
+                            <button class="btn collapse-item" type="submit" name="year">Received this year</button>
+                            <button class="btn collapse-item" type="submit" name="assignee">Recevied assignee</button>
+                        </div>
+                    </form>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
+                    aria-expanded="true" aria-controls="collapseThree">
+                    <i class="fas fa-fw fa-cog" style="color:black"></i>
+                    <span style="color:black">Configuration</span>
+                </a>
+
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
+                    <form action="configuration.php" method="post">
+                        <div class="bg-light py-2 collapse-inner rounded">
+                            <button class="btn" type="submit" name="add_doc_cat">Add Document Category</button>
+                            <button class="btn" type="submit" name="update_doc_cat">Update Document Category</button>
+                            <button class="btn" type="submit" name="delete_doc_cat">Delete Document Category</button>
                         </div>
                     </form>
                 </div>
@@ -322,6 +340,61 @@
                                     <div class="collapse show" id="collapseCardExample">
 
                                         <div class="form-group px-5 pt-2">
+                                            <label for="recipient-name">Centre of Studies</label>
+                                            <select  name="kuliyyah" class="form-control">
+                                                <option value="AIKOL">Ahmad Ibrahim Kulliyyah of Laws (AIKOL)</option>
+                                                <option value="KAHS">Kulliyyah of Allied Health Sciences (KAHS)</option>
+                                                <option value="KAED">Kulliyyah of Architecture and Environmental Design (KAED)</option>
+                                                <option value="KOD">Kulliyyah of Dentistry (KOD)</option>
+                                                <option value="KENMS">Kulliyyah of Economics and Management Sciences (KENMS)</option>
+                                                <option value="KOED">Kulliyyah of Education (KOED)</option>
+                                                <option value="KOE">Kulliyyah of Engineering (KOE)</option>
+                                                <option value="KICT">Kulliyyah of Information and Communication Technology (KICT)</option>
+                                                <option value="KIRKHS">Kulliyyah of Islamic Revealed Knowledge and Human Sciences (KIRKHS)</option>
+                                                <option value="KLM">Kulliyyah of Languages and Management (KLM)</option>
+                                                <option value="KOM">Kulliyyah of Medicine (KOM)</option>
+                                                <option value="KON">Kulliyyah of Nursing (KON)</option>
+                                                <option value="KOP">Kulliyyah of Pharmacy (KOP)</option>
+                                                <option value="KOS">Kulliyyah of Science (KOS)</option>
+                                                <option value="ACADEMY">Academy of Graduate and Professional Studies (ACADEMY)</option>
+                                                <option value="CFS">Centre for Foundation Studies (CFS)</option>
+                                                <option value="CELPAD">Centre for Languages and Pre-University Academic Development (CELPAD)</option>
+                                                <option value="IIiBF">Institute of Islamic Banking and Finance (IIiBF)</option>
+                                                <option value="INHART">International Institute of Halal Research and Training (INHART)</option>
+                                                <option value="ISTAC">International Institute of Islamic Civilization and Malay World (ISTAC)</option>
+                                                <option value="Others">Others</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group px-5 pt-2">
+                                            <label for="doc_desc">Category of documents</label>
+                                            <select  name="doc_desc" class="form-control">
+                                                <option value="Establishment New Academic Programme">Establishment New Academic Programme</option>
+                                                <option value="Saringan Awal (JPT) - for UG only">Saringan Awal (JPT) - for UG only</option>
+                                                <option value="Kertas Cadangan Permohonan Program Baharu (JPT)">Kertas Cadangan Permohonan Program Baharu (JPT)</option>
+                                                <option value="Kertas Cadangan Semakan Kurikulum (JPT)">Kertas Cadangan Semakan Kurikulum (JPT)</option>
+                                                <option value="Provisional Accreditation (MQA-01) - Self-Accreditation">Provisional Accreditation (MQA-01) - Self-Accreditation</option>
+                                                <option value="Provisional Accreditation (MQA-01)/Manual Professional Body ">Provisional Accreditation (MQA-01)/Manual Professional Body </option>
+                                                <option value="Full Accreditation (MQA-02) - Self-Accreditation">Full Accreditation (MQA-02) - Self-Accreditation</option>
+                                                <option value="Full Accreditation (MQA-02)/Manual Professional Body">Full Accreditation (MQA-02)/Manual Professional Body</option>
+                                                <option value="other">Other</option>
+                                            </select>
+                                            <!--<input type="" class="form-control" id="doc_desc" name="doc_desc">-->
+                                        </div>
+
+                                        <div class="form-group px-5 pt-2">
+                                            <label for="programme">Programmme</label>
+                                            <select  name="programme" class="form-control">
+                                                <option value="Proposal for new programme">Proposal for new programme</option>
+                                                <option value="MQA 01 Document">MQA 01 Document</option>
+                                                <option value="MQA 02 Document">MQA 02 Document</option>
+                                                <option value="Curriculum Review Document">Curriculum Review Document</option>
+                                                <option value="other">Other</option>
+                                            </select>
+                                            <!--<input type="" class="form-control" id="doc_desc" name="doc_desc">-->
+                                        </div>
+
+                                        <div class="form-group px-5 pt-2">
                                             <label for="doc_name">Document Name *</label>
                                             <input type="" class="form-control" id="doc_name" name="doc_name" required autocomplete="off">
                                         </div>
@@ -363,14 +436,10 @@
                                         <div class="form-group px-5 pt-2">
                                             <label for="responsibility">Assignee</label>
 
-                                            <?php 
-                                                // include "C:\\xampp\htdocs\DTS2\includes\connect.php";
-
+                                            <?php
                                                 // SQL query to fetch information of registerd users and finds user match.
                                                 $query = "SELECT * FROM users WHERE (role_name != 'admin' || 'Admin') AND (role_name != 'owner' || 'Owner')";
                                                 $result = mysqli_query($conn,$query);
-
-                                                //echo $conn->error;
 
                                                 echo"<select class='form-control' name='responsibility'>";
                                                 echo"<option value=''></option>";
@@ -388,48 +457,8 @@
                                                     $count = 0;
                                                 }
                                                 echo"</select>";
-                                            
-                                                // mysqli_close($conn); // Closing Connection
+
                                             ?>  <small>Name -> Role -> Document Count</small>
-                                        </div>
-
-                                        <div class="form-group px-5 pt-2">
-                                            <label for="recipient-name">Centre of Studies</label>
-                                            <select  name="kuliyyah" class="form-control">
-                                                <option value="AIKOL">Ahmad Ibrahim Kulliyyah of Laws (AIKOL)</option>
-                                                <option value="KAHS">Kulliyyah of Allied Health Sciences (KAHS)</option>
-                                                <option value="KAED">Kulliyyah of Architecture and Environmental Design (KAED)</option>
-                                                <option value="KOD">Kulliyyah of Dentistry (KOD)</option>
-                                                <option value="KENMS">Kulliyyah of Economics and Management Sciences (KENMS)</option>
-                                                <option value="KOED">Kulliyyah of Education (KOED)</option>
-                                                <option value="KOE">Kulliyyah of Engineering (KOE)</option>
-                                                <option value="KICT">Kulliyyah of Information and Communication Technology (KICT)</option>
-                                                <option value="KIRKHS">Kulliyyah of Islamic Revealed Knowledge and Human Sciences (KIRKHS)</option>
-                                                <option value="KLM">Kulliyyah of Languages and Management (KLM)</option>
-                                                <option value="KOM">Kulliyyah of Medicine (KOM)</option>
-                                                <option value="KON">Kulliyyah of Nursing (KON)</option>
-                                                <option value="KOP">Kulliyyah of Pharmacy (KOP)</option>
-                                                <option value="KOS">Kulliyyah of Science (KOS)</option>
-                                                <option value="ACADEMY">Academy of Graduate and Professional Studies (ACADEMY)</option>
-                                                <option value="CFS">Centre for Foundation Studies (CFS)</option>
-                                                <option value="CELPAD">Centre for Languages and Pre-University Academic Development (CELPAD)</option>
-                                                <option value="IIiBF">Institute of Islamic Banking and Finance (IIiBF)</option>
-                                                <option value="INHART">International Institute of Halal Research and Training (INHART)</option>
-                                                <option value="ISTAC">International Institute of Islamic Civilization and Malay World (ISTAC)</option>
-                                                <option value="Others">Others</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="form-group px-5 pt-2">
-                                            <label for="doc_desc">Document Type</label>
-                                            <select  name="doc_desc" class="form-control">
-                                                <option value="Proposal for new programme">Proposal for new programme</option>
-                                                <option value="MQA 01 Document">MQA 01 Document</option>
-                                                <option value="MQA 02 Document">MQA 02 Document</option>
-                                                <option value="Curriculum Review Document">Curriculum Review Document</option>
-                                                <option value="other">Other</option>
-                                            </select>
-                                            <!--<input type="" class="form-control" id="doc_desc" name="doc_desc">-->
                                         </div>
 
                                         <div class="form-group px-5 pt-2">
@@ -590,7 +619,6 @@
 
             //echo $doc_name." ".$sender." ".$responsibility." ".$kuliyyah." ".$doc_desc." ".$receive_date . " " . $due_date;
             //echo $doc_location." ".$doc_attention." ".$doc_characteristic." ".$doc_status." ".$doc_comment;
-
 
             // SQL query to fetch information of registerd users and finds user match.
             $query = "INSERT INTO documents 
