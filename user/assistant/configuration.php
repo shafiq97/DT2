@@ -2,13 +2,17 @@
   session_start(); // Starting Session
   include '../../includes/connect.php';
 
-  if (isset($_POST['add_doc_cat'])) 
+  if (isset($_POST['doc_cat_view'])) 
   {
-    header("Location: add_doc_cat.php");
+    header("Location: doc_cat_view.php");
   } 
-  else 
+  else if (isset($_POST['update_doc_cat']))
   {
-    echo "Error updating record: " . $conn->error;
+    header("Location: update_doc_cat.php");
+  }
+  else if (isset($_POST['add_cos']))
+  {
+    header("Location: add_cos.php");
   }
 
   //update to logs

@@ -73,104 +73,7 @@
 
     <!-- Page Wrapper -->
     <div id="wrapper">
-
-        <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion uia" id="accordionSidebar">
-
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
-                <div class="sidebar-brand-text mx-3 uia">Role: <?php echo $_SESSION['role_name']?></div>
-            </a>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
-                <a class="nav-link" href="index.php">
-                    <i class="fas fa-fw fa-tachometer-alt" style="color:black"></i>
-                    <span style="color:black">Dashboard</span></a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-            <!-- Heading -->
-            <div class="sidebar-heading" style="color:black">
-                Menu
-            </div>
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="indexmain.php">
-                    <i class="fas fa-fw fa-chart-area" style="color:black"></i>
-                    <span style="color:black">Add Document</span><br>
-                </a>
-            </li>
-
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="announcement.php">
-                    <i class="fas fa-fw fa-table" style="color:black"></i>
-                    <span style="color:black">View Announcement</span></a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="view_docs.php">
-                    <i class="fas fa-fw fa-table" style="color:black"></i>
-                    <span style="color:black">View and Track Documents</span></a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog" style="color:black"></i>
-                    <span style="color:black">Generate Report</span>
-                </a>
-
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <form action="report.php" method="post">
-                        <div class="bg-light py-2 collapse-inner rounded">
-                            <button class="btn collapse-item" type="submit" name="month">Received this month</button>
-                            <button class="btn collapse-item" type="submit" name="year">Received this year</button>
-                            <button class="btn collapse-item" type="submit" name="assignee">Recevied assignee</button>
-                        </div>
-                    </form>
-                </div>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
-                    aria-expanded="true" aria-controls="collapseThree">
-                    <i class="fas fa-fw fa-cog" style="color:black"></i>
-                    <span style="color:black">Configuration</span>
-                </a>
-
-                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
-                    <form action="configuration.php" method="post">
-                        <div class="bg-light py-2 collapse-inner rounded">
-                            <button class="btn" type="submit" name="add_doc_cat">Add Document Category</button>
-                            <button class="btn" type="submit" name="update_doc_cat">Update Document Category</button>
-                            <button class="btn" type="submit" name="delete_doc_cat">Delete Document Category</button>
-                        </div>
-                    </form>
-                </div>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="../../includes/logout.php">
-                    <i class="fas fa-fw fa-table" style="color:black"></i>
-                    <span style="color:black">Logout</span></a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
-
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-
-        </ul>
-        <!-- End of Sidebar -->
-
+        <?php include 'sidebar.php'; ?>
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
@@ -369,15 +272,16 @@
                                         <div class="form-group px-5 pt-2">
                                             <label for="doc_desc">Category of documents</label>
                                             <select  name="doc_desc" class="form-control">
-                                                <option value="Establishment New Academic Programme">Establishment New Academic Programme</option>
-                                                <option value="Saringan Awal (JPT) - for UG only">Saringan Awal (JPT) - for UG only</option>
-                                                <option value="Kertas Cadangan Permohonan Program Baharu (JPT)">Kertas Cadangan Permohonan Program Baharu (JPT)</option>
-                                                <option value="Kertas Cadangan Semakan Kurikulum (JPT)">Kertas Cadangan Semakan Kurikulum (JPT)</option>
-                                                <option value="Provisional Accreditation (MQA-01) - Self-Accreditation">Provisional Accreditation (MQA-01) - Self-Accreditation</option>
-                                                <option value="Provisional Accreditation (MQA-01)/Manual Professional Body ">Provisional Accreditation (MQA-01)/Manual Professional Body </option>
-                                                <option value="Full Accreditation (MQA-02) - Self-Accreditation">Full Accreditation (MQA-02) - Self-Accreditation</option>
-                                                <option value="Full Accreditation (MQA-02)/Manual Professional Body">Full Accreditation (MQA-02)/Manual Professional Body</option>
-                                                <option value="other">Other</option>
+                                            <?php
+                                                $sql = "SELECT * FROM doc_category";
+                                                $stmnt = $conn->prepare($sql);
+                                                $stmnt->execute();
+                                                $result = $stmnt->get_result();
+                                                while ($row = $result->fetch_assoc()) {
+                                                    echo $row['doc_cat_name'];
+                                                    echo "<option value='".$row['doc_cat_name']."'> ".$row['doc_cat_name']."</option>";
+                                                }
+                                            ?>
                                             </select>
                                             <!--<input type="" class="form-control" id="doc_desc" name="doc_desc">-->
                                         </div>

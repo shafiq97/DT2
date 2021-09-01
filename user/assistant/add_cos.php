@@ -39,16 +39,16 @@
                                     <!-- Card Header - Accordion -->
                                     <a href="#collapseCardExample" class="d-block card-header py-3 black" data-toggle="collapse"
                                         role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                                        <h6 class="font-weight-bold text-white px-4">Add Document Category:<span> * Required Fill </span></h6>
+                                        <h6 class="font-weight-bold text-white px-4">Add Centre of Studies:<span> * Required Fill </span></h6>
                                     </a>
                                     <!-- Card Content - Collapse -->
                                     <div class="collapse show" id="collapseCardExample">
                                         <div class="form-group px-5 pt-2">
-                                            <label for="doc_name">Category Name *</label>
-                                            <input type="text" class="form-control" id="doc_cat_name" name="doc_cat_name" required autocomplete="off">
+                                            <label for="doc_name">Centre of Studies *</label>
+                                            <input type="text" class="form-control" id="cos_name" name="cos_name" required autocomplete="off">
                                         </div>
                                         <div class="form-group px-5 pt-2">
-                                            <button type="submit" class="btn uia" style="color:white" value="Add" name="add_doc_cat_submit">Add</button>
+                                            <button type="submit" class="btn uia" style="color:white" value="Add" name="add_cos_submit">Add</button>
                                         </div>
                                     </div>     
                                 </div>
@@ -119,7 +119,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
 
-<!-- 11--->
+
 </body>
 
 </html>

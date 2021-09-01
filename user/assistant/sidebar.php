@@ -70,9 +70,27 @@
     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
         <form action="configuration.php" method="post">
             <div class="bg-light py-2 collapse-inner rounded">
-                <button class="btn" type="submit" name="add_doc_cat">Add Document Category</button>
+                <button class="btn" type="submit" name="doc_cat_view">Document Category</button>
                 <button class="btn" type="submit" name="update_doc_cat">Update Document Category</button>
                 <button class="btn" type="submit" name="delete_doc_cat">Delete Document Category</button>
+            </div>
+        </form>
+    </div>
+</li>
+
+<li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour"
+        aria-expanded="true" aria-controls="collapseThree">
+        <i class="fas fa-fw fa-cog" style="color:black"></i>
+        <span style="color:black">Centre of Studies</span>
+    </a>
+
+    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
+        <form action="configuration.php" method="post">
+            <div class="bg-light py-2 collapse-inner rounded">
+                <button class="btn" type="submit" name="add_cos">Add Centre of Studies</button>
+                <button class="btn" type="submit" name="update_cos">Update Centre of Studies</button>
+                <button class="btn" type="submit" name="delete_cos">Delete Centre of Studies</button>
             </div>
         </form>
     </div>
