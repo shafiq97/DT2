@@ -14,6 +14,10 @@
   {
     header("Location: add_cos.php");
   }
+  else if (isset($_POST['centre_of_studies_view']))
+  {
+    header("Location: centre_of_studies_view.php");
+  }
 
   //update to logs
       $query2 = "INSERT INTO logs 

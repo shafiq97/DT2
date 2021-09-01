@@ -1,36 +1,5 @@
 <?php 
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
-    session_start();
-    include '../../includes/connect.php';
-    //echo $_SESSION['name'];
-    $name = $_SESSION['name'];
-
-    $query = "SELECT doc_status FROM documents where (doc_responsibility='$name') AND (doc_status='Pending')";
-    $result = mysqli_query($conn,$query);
-    $row = mysqli_num_rows($result);
-
-    mysqli_free_result($result);
-    //echo $row;
-
-    $today_date = date("Y-m-d");
-
-    $query2 = "SELECT `date`,`message` FROM announcement";
-    $result2 = mysqli_query($conn,$query2);
-    $count = 0;
-    
-    while ($row2 = mysqli_fetch_array($result2)) {
-        $announcement_date = date("Y-m-d",strtotime($row2['date']));
-        if($today_date === $announcement_date){
-            $count++;
-            //echo $today_date ." ". $announcement_date;
-            //echo $row2['message'];
-        }
-        //$date = $row['date'];
-        //$formatted_date = strtotime($date);
-        //echo "<td id='".$row['login']."'>". $row['login'] ."</td>";
-    }
+    include "notification.php";
 ?>
 
 <!DOCTYPE html>
@@ -49,25 +18,11 @@
         rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
-<style type="text/css">
 
-  .all{
-    font-family: "Nunito", sans-serif;
-  }
-
-  .uia{
-    background: #50C8B5;
-    color: black;
-  }
-
-  .black{
-      background: #6C6C6C;
-      color: white;
-  }
-
-</style>
 
 <body id="page-top">
 
@@ -76,155 +31,9 @@
         <?php include 'sidebar.php'; ?>
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-
             <!-- Main Content -->
             <div id="content">
-
-                <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light black topbar mb-4 static-top shadow">
-
-                    <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
-
-                    <!-- Topbar Search -->
-                    <div>
-                      Document Tracking System
-                    </div>
-
-                    <!-- Topbar Navbar -->
-                    <ul class="navbar-nav ml-auto black">
-
-                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                        <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-search fa-fw"></i>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                aria-labelledby="searchDropdown">
-                                <form class="form-inline mr-auto w-100 navbar-search">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Search for..." aria-label="Search"
-                                            aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
-                                                <i class="fas fa-search fa-sm"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </li>
-
-                        <!-- Nav Item - Alerts -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-bell fa-fw"></i>
-                                <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter"><?php echo $row?></span>
-                            </a>
-                            <!-- Dropdown - Alerts -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="alertsDropdown">
-                                <h6 class="dropdown-header">
-                                    Alerts Center
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="index.php">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-primary">
-                                            <i class="fas fa-file-alt text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <?php 
-                                            include "C:\\xampp\htdocs\DTS2\includes\connect.php";
-                                            $query6 = "SELECT * FROM documents WHERE (doc_responsibility = '".$_SESSION['name']."') AND (doc_status = 'Pending')";
-                                            $result6 = mysqli_query($conn,$query6);
-                                            echo"<div class='small text-gray-500'> ".date('D\, d-M-Y')."</div>";
-                                            echo"<span class='font-weight-bold'>You have ".$row." pending documents </span>";
-                                            while ($row6 = mysqli_fetch_array($result6)) {
-                                                echo $row6['doc_name']; 
-                                                echo "<br>";
-                                                echo $row6['doc_comment']; 
-                                                echo "<br><br>";
-                                            }
-                                        ?>
-                                    </div>
-                                </a>
-                            </div>
-                        </li>
-
-                        <!-- Nav Item - Messages -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-envelope fa-fw"></i>
-                                <!-- Counter - Messages -->
-                                <span class="badge badge-danger badge-counter"><?php echo $count ?></span>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="messagesDropdown">
-                                <h6 class="dropdown-header">
-                                    Announcement for today
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="announcement.php">
-                                    <div class="font-weight-bold">
-                                    <?php
-                                        $today_date1 = date("Y-m-d");
-
-                                        $query3 = "SELECT `date`,`message` FROM announcement ORDER BY `date` DESC";
-                                        $result3 = mysqli_query($conn,$query3);
-                                        
-                                        while ($row3 = mysqli_fetch_array($result3)) {
-                                            $announcement_date1 = date("Y-m-d",strtotime($row3['date']));
-                                            if($today_date1 === $announcement_date1){
-                                                echo date("D\, d-M-Y", strtotime($today_date1));
-                                                echo"<div class='text-truncate'>".$row3['message']."</div><br>";
-                                            }
-
-                                            //$date = $row['date'];
-                                            //$formatted_date = strtotime($date);
-
-                                            //echo "<td id='".$row['login']."'>". $row['login'] ."</td>";
-                                        }
-                                    ?>
-                                    </div>
-                                </a>
-                            </div>
-                        </li>
-
-                        <div class="topbar-divider d-none d-sm-block"></div>
-
-                        <!-- Nav Item - User Information -->
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-white-600 small"><?php echo $_SESSION['name']?></span>
-                                <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
-                            </a>
-                            <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
-                                </a>
-                            </div>
-                        </li>
-
-                    </ul>
-
-                </nav>
-                <!-- End of Topbar -->
-
+                <?php include "topbar.php"; ?>
                 <!-- Begin Page Content -->
                 <form method="post" enctype="multipart/form-data">
                     <div class="container-fluid">
@@ -241,32 +50,21 @@
                                     <!-- Card Content - Collapse -->
                                     
                                     <div class="collapse show" id="collapseCardExample">
-
                                         <div class="form-group px-5 pt-2">
-                                            <label for="recipient-name">Centre of Studies</label>
+                                            <label for="cos">Centre of Studies</label>
                                             <select  name="kuliyyah" class="form-control">
-                                                <option value="AIKOL">Ahmad Ibrahim Kulliyyah of Laws (AIKOL)</option>
-                                                <option value="KAHS">Kulliyyah of Allied Health Sciences (KAHS)</option>
-                                                <option value="KAED">Kulliyyah of Architecture and Environmental Design (KAED)</option>
-                                                <option value="KOD">Kulliyyah of Dentistry (KOD)</option>
-                                                <option value="KENMS">Kulliyyah of Economics and Management Sciences (KENMS)</option>
-                                                <option value="KOED">Kulliyyah of Education (KOED)</option>
-                                                <option value="KOE">Kulliyyah of Engineering (KOE)</option>
-                                                <option value="KICT">Kulliyyah of Information and Communication Technology (KICT)</option>
-                                                <option value="KIRKHS">Kulliyyah of Islamic Revealed Knowledge and Human Sciences (KIRKHS)</option>
-                                                <option value="KLM">Kulliyyah of Languages and Management (KLM)</option>
-                                                <option value="KOM">Kulliyyah of Medicine (KOM)</option>
-                                                <option value="KON">Kulliyyah of Nursing (KON)</option>
-                                                <option value="KOP">Kulliyyah of Pharmacy (KOP)</option>
-                                                <option value="KOS">Kulliyyah of Science (KOS)</option>
-                                                <option value="ACADEMY">Academy of Graduate and Professional Studies (ACADEMY)</option>
-                                                <option value="CFS">Centre for Foundation Studies (CFS)</option>
-                                                <option value="CELPAD">Centre for Languages and Pre-University Academic Development (CELPAD)</option>
-                                                <option value="IIiBF">Institute of Islamic Banking and Finance (IIiBF)</option>
-                                                <option value="INHART">International Institute of Halal Research and Training (INHART)</option>
-                                                <option value="ISTAC">International Institute of Islamic Civilization and Malay World (ISTAC)</option>
-                                                <option value="Others">Others</option>
+                                            <?php
+                                                $sql = "SELECT * FROM centre_of_studies";
+                                                $stmnt = $conn->prepare($sql);
+                                                $stmnt->execute();
+                                                $result = $stmnt->get_result();
+                                                while ($row = $result->fetch_assoc()) {
+                                                    echo $row['cos_name'];
+                                                    echo "<option value='".$row['cos_name']."'> ".$row['cos_name']."</option>";
+                                                }
+                                            ?>
                                             </select>
+                                            <!--<input type="" class="form-control" id="doc_desc" name="doc_desc">-->
                                         </div>
 
                                         <div class="form-group px-5 pt-2">
@@ -490,7 +288,7 @@
         //session_start(); // Starting Session
 
         if (isset($_POST['doc_submit'])) {
-            include "C:\\xampp\htdocs\DTS2\includes\connect.php";
+            include "../../includes/connect.php";
 
             // Get all data from form
             $doc_name = $_POST['doc_name'];
@@ -530,13 +328,24 @@
             VALUES ('$doc_name', '$sender', '$responsibility', '$kulliyah', '$doc_desc', '$receive_date', '$due_date', '$doc_location', '$doc_attention', '$doc_characteristic', '$doc_status', '$doc_comment', '$owner')";
             //$query = "UPDATE users SET role_name='$role' WHERE name='$user'";
             if ($conn->query($query) === TRUE) {
-                echo "<script>alert('Document recorded successfully,')</script> ";
+                // echo "<script>alert('Document recorded successfully,')</script> ";
+                ?>
+                    <script>
+                        swal({
+                            title: "Document inserted",
+                            text: "",
+                            icon: "success"
+                        }).then(function() {
+                            window.location = "view_docs.php";
+                        });
+                    </script>
+                <?php
             } else {
               echo "Error updating record: " . $conn->error;
             }
 
             //update to logs
-                    $query2 = "INSERT INTO logs 
+            $query2 = "INSERT INTO logs 
             (doc_id,doc_name,doc_sender,doc_responsibility, doc_kulliyah, doc_description, doc_receive, doc_due, doc_location, doc_attention, doc_characteristic, doc_status, doc_comment, owner)
             VALUES (LAST_INSERT_ID(),'$doc_name', '$sender', '$responsibility', '$kulliyah', '$doc_desc', '$receive_date', '$due_date', '$doc_location', '$doc_attention', '$doc_characteristic', '$doc_status', '$doc_comment', '$owner')";
             //$query = "UPDATE users SET role_name='$role' WHERE name='$user'";

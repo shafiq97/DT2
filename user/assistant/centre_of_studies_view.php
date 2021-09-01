@@ -50,23 +50,20 @@
                 <div class="container-fluid" id="container-fluid">
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
-                    
                         <div class="card-header py-3 black">
                             <div>
-                                <h6 class="m-0 font-weight-bold text-white float-left">Document Category</h6>
+                                <h6 class="m-0 font-weight-bold text-white float-left">Centre of Studies</h6>
                             </div> 
                         </div>
-
-                        <a href="add_doc_cat.php" class="btn btn-primary">Add Document Category</a>
-
+                        <a href="add_cos.php" class="btn btn-primary">Add Centre of Studies</a>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered hover" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <!-- <th>Doc ID</th> -->
-                                            <th>Document Category ID</th>
-                                            <th>Document Category Name</th>
+                                            <th>ID</th>
+                                            <th>Centre of Studies</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
                                         </tr>
@@ -74,8 +71,8 @@
                                     <tfoot>
                                         <tr>
                                             <!-- <th>Doc ID</th> -->
-                                            <th>Document Category ID</th>
-                                            <th>Document Category Name</th>
+                                            <th>ID</th>
+                                            <th>Centre of Studies</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
                                         </tr>
@@ -85,7 +82,7 @@
                                         <?php 
                                             include '../../includes/connect.php';
 
-                                            $sql = "SELECT * FROM doc_category ORDER BY doc_cat_id";
+                                            $sql = "SELECT * FROM centre_of_studies ORDER BY id";
 
                                             $result = mysqli_query($conn,$sql); 
                                             
@@ -93,38 +90,38 @@
  
                                                 echo "<tr>";
                                                 echo "<form method='post' id='myFormID'>";
-                                                echo "<input type='hidden' name='doc_cat_id' value=".$row['doc_cat_id']."> ";
-                                                echo "<td>" . $row['doc_cat_id'] . "</td>";
-                                                echo "<td name='doc_cat_name'>" . $row['doc_cat_name'] . "</td>";
+                                                echo "<input type='hidden' name='doc_cat_id' value=".$row['id']."> ";
+                                                echo "<td>" . $row['id'] . "</td>";
+                                                echo "<td name='doc_cat_name'>" . $row['cos_name'] . "</td>";
 
-                                                echo "<td><button class='btn btn-success' data-toggle='modal' data-target='#doc-".$row['doc_cat_id']."' type='button' name='save_button' value='".$row['doc_cat_id']."'>Edit</button>
+                                                echo "<td><button class='btn btn-success' data-toggle='modal' data-target='#doc-".$row['id']."' type='button' name='save_button' value='".$row['id']."'>Edit</button>
                                                         </td>";
 
-                                                echo "<td><button class='btn btn-danger' data-toggle='modal' data-target='#doc_dlt-".$row['doc_cat_id']."' type='button' name='delete_btn'  value='".$row['doc_cat_id']."'>Delete</button>
+                                                echo "<td><button class='btn btn-danger' data-toggle='modal' data-target='#doc_dlt-".$row['id']."' type='button' name='delete_btn'  value='".$row['id']."'>Delete</button>
                                                         </td>";
 
                                                 echo "</form>";
                                                 echo "</tr>";
                                                 
-                                                echo"<div id='doc-".$row['doc_cat_id']."' class='modal fade' role='dialog'>
+                                                echo"<div id='doc-".$row['id']."' class='modal fade' role='dialog'>
                                                         <div class='modal-dialog'>
                                                             <!-- Modal content-->
                                                             <div class='modal-content'>
 
                                                                 <div class='modal-header'>    
-                                                                    <h4 class='modal-title'>Update Document Detail</h4>
+                                                                    <h4 class='modal-title'>Update Center of Studies</h4>
                                                                     <button type='button' class='close' data-dismiss='modal'>&times;</button>
                                                                 </div>
 
                                                                 <div class='modal-body'>
                                                                     <form class='form-group' method='post'>
                                                                         <div class='px-5 pb-3'>
-                                                                            <Label>Document ID</label>
-                                                                            <input readonly class='form-control' name='id' id='doc-".$row['doc_cat_id']."' value='".$row['doc_cat_id']."'>
+                                                                            <Label>Centre of Studies ID</label>
+                                                                            <input readonly class='form-control' name='id' id='doc-".$row['id']."' value='".$row['id']."'>
                                                                         </div>
                                                                         <div class='px-5 pb-3'>
-                                                                            <Label>Document Name</label>
-                                                                            <input class='form-control' id='".$row['doc_cat_name']."' value='".$row['doc_cat_name']."' name='doc_cat_name' required>
+                                                                            <Label>Centre of Studies</label>
+                                                                            <input class='form-control' id='".$row['cos_name']."' value='".$row['cos_name']."' name='cos_name' required>
                                                                         </div>
                                                                         <div class='modal-footer'>
                                                                             <button type='submit' class='btn btn-default' name='update_btn'>Update</button>
@@ -136,16 +133,16 @@
                                                         </div>
                                                     </div>";
 
-                                                    echo"<div id='doc_dlt-".$row['doc_cat_id']."' class='modal fade' role='dialog'>
+                                                    echo"<div id='doc_dlt-".$row['id']."' class='modal fade' role='dialog'>
                                                         <div class='modal-dialog'>
                                                             <!-- Modal content-->
                                                             <div class='modal-content'>
                                                                 <div class='modal-body'>
                                                                     <form class='form-group' method='post'>
-                                                                        <input type='hidden' value='".$row['doc_cat_id']."' name='doc_cat_id' >
-                                                                        <p> ".$row['doc_cat_name']." </p>
+                                                                        <input type='hidden' value='".$row['id']."' name='id' >
+                                                                        <p> ".$row['cos_name']." </p>
                                                                         <div class='modal-footer'>
-                                                                            <button type='submit' class='btn btn-default' name='delete_btn'>Delete</button>
+                                                                            <button type='submit' class='btn btn-danger' name='delete_btn'>Delete</button>
                                                                             <button type='button' class='btn btn-default' data-dismiss='modal'>Cancel</button>
                                                                         </div>
                                                                     </form>
@@ -349,15 +346,6 @@
                         },
                     },
 
-                    {
-                        text: 'My button',
-                        className: 'btn btn-primary',
-                        action: function ( e, dt, node, config ) {
-                            alert( 'Button activated' );
-                        },
-                        
-                    }
-
                     /*{
                         extend: 'colvis',
                         exportOptions:{
@@ -375,11 +363,11 @@
     //session_start(); // Starting Session
     $error = ''; // Variable To Store Error Message
     if (isset($_POST['update_btn'])) {
-        $sql = "UPDATE doc_category SET doc_cat_name=? WHERE doc_cat_id=?";
+        $sql = "UPDATE centre_of_studies SET cos_name=? WHERE id=?";
         $stmnt = $conn->prepare($sql);
-        $stmnt->bind_param('si',$doc_cat_name, $doc_cat_id);
-        $doc_cat_id = $_POST['id'];
-        $doc_cat_name = $_POST['doc_cat_name'];
+        $stmnt->bind_param('si',$cos_name, $id);
+        $id = $_POST['id'];
+        $cos_name = $_POST['cos_name'];
         $status = $stmnt->execute();
         if($status === false){
             echo "Something is wrong";
@@ -391,7 +379,7 @@
                         title: "Record updated successfully",
                         icon: "success"
                     }).then(function() {
-                        window.location = "doc_cat_view.php";
+                        window.location = "centre_of_studies_view.php";
                     });
                 </script>
             <?php
@@ -399,13 +387,13 @@
         mysqli_close($conn); // Closing Connection 
     }
     else if (isset($_POST['delete_btn'])) {
-        $sql = "DELETE FROM doc_category WHERE doc_cat_id=?";
+        $sql = "DELETE FROM centre_of_studies WHERE id=?";
         $stmnt = $conn->prepare($sql);
-        $stmnt->bind_param('i', $doc_cat_id);
-        $doc_cat_id = $_POST['doc_cat_id'];
+        $stmnt->bind_param('i', $id);
+        $id = $_POST['id'];
         $status = $stmnt->execute();
-        if(empty($doc_cat_id)){
-            echo "DOC ID is empty";
+        if(empty($id)){
+            echo "ID is empty";
         }
         if($status === false){
             echo "Something is wrong";
@@ -417,7 +405,7 @@
                         title: "Record deleted successfully",
                         icon: "success"
                     }).then(function() {
-                        window.location = "doc_cat_view.php";
+                        window.location = "centre_of_studies_view.php";
                     });
                 </script>
             <?php

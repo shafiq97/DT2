@@ -110,7 +110,7 @@
                         text: "",
                         icon: "success"
                     }).then(function() {
-                        window.location = "indexmain.php";
+                        window.location = "centre_of_studies_view.php";
                     });
                 </script>
             <?php
