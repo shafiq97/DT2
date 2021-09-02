@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 01, 2021 at 04:17 PM
+-- Generation Time: Sep 02, 2021 at 04:54 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -114,7 +114,7 @@ INSERT INTO `documents` (`id`, `doc_name`, `doc_sender`, `doc_responsibility`, `
 (1005, 'MQA 01 - for Bachelor in Mathematics', 'Dr Zariyah', 'Siti Amrin', 'KOS', '', '2020-12-28 17:25:04', '2021-01-05 08:25:07', 'https://drive.google.com/file/d/1Mj5pflm7o18SmgMoHW-zgJ0Kk05_VM8C/view?usp=sharing', 'Others', 'Softcopy and Hardcopy', 'Completed', 'For approval', 'kict user'),
 (1006, 'New Curriculum Programme', 'SADD - Pn, Aida', 'Anis Asri', 'AIKOL', 'Curriculum', '2020-12-31 12:47:12', '2021-01-07 12:47:14', 'https://drive.google.com/file/d/1Mj5pflm7o18SmgMoHW-zgJ0Kk05_VM8C/view?usp=sharing', 'Not Urgent', 'Softcopy', 'Pending', 'Forward to director', 'Syazmi Hafiz'),
 (1009, 'Trying purpose', 'Try', 'Izzati Saharan', 'CELPAD', 'Other', '2021-01-05 22:57:18', '2021-01-13 22:57:20', 'Front Desk, https://drive.google.com/file/d/1Mj5pflm7o18SmgMoHW-zgJ0Kk05_VM8C/view?usp=sharing ', 'Urgent', 'Softcopy', 'Pending', 'Reviewed', 'kict user'),
-(1010, 'try 3', 'try 3', 'Izzati Saharan', 'KOS', 'Other', '2021-01-06 00:44:59', '2021-02-05 00:45:01', 'Front Desk, https://drive.google.com/file/d/1Mj5pflm7o18SmgMoHW-zgJ0Kk05_VM8C/view?usp=sharing ', 'Not Urgent', 'Softcopy and Hardcopy', 'Pending', 'Return to sender', 'Syazmi Hafiz'),
+(1010, 'My Document', 'try 3', 'Izzati Saharan', 'KOS', 'Other', '2021-01-06 00:44:59', '2021-02-05 00:45:01', 'Front Desk, https://drive.google.com/file/d/1Mj5pflm7o18SmgMoHW-zgJ0Kk05_VM8C/view?usp=sharing ', 'Not Urgent', 'Softcopy and Hardcopy', 'Pending', 'Return to sender', 'Syazmi Hafiz'),
 (1011, 'MQA 02 - Bachelor of Information Technology', 'Br. Firdaus', 'Anis Asri', 'KICT', '', '2021-01-06 00:59:34', '2021-01-14 00:59:36', 'https://drive.google.com/file/d/1Mj5pflm7o18SmgMoHW-zgJ0Kk05_VM8C/view?usp=sharing', 'Not Urgent', 'Softcopy', 'Pending', 'Forward to director', 'kict user'),
 (1012, '11123', '1', 'Siti Amrin', 'KOD', 'Other', '2021-01-08 11:07:36', '2021-01-14 11:07:39', 'https://drive.google.com/file/d/1Mj5pflm7o18SmgMoHW-zgJ0Kk05_VM8C/view?usp=sharing', 'Not Urgent', 'Softcopy and Hardcopy', 'Completed', 'Reviewed', 'kict user'),
 (1013, 'MQA 01 Bachelor of Nursing', 'Dr. Zaliza', 'Anis Asri', 'KON', 'MQA 01 Document', '2021-01-13 09:37:37', '2021-01-20 09:37:40', 'Front Desk', 'Not Urgent', 'Hardcopy', 'Pending', 'Forward to director', 'Syazmi Hafiz'),
@@ -126,7 +126,8 @@ INSERT INTO `documents` (`id`, `doc_name`, `doc_sender`, `doc_responsibility`, `
 (1019, 'Testing Document', 'Me', 'Izzati Saharan', 'Academy of Graduate and Professional Studies (ACADEMY)', 'Curriculum Review', '2021-09-01 12:57:44', '2021-09-01 12:57:55', 'youtube.com', 'Urgent', 'Softcopy', 'Pending', 'To be reviewed', 'kict user'),
 (1021, 'test2', 'me', 'Syazmi Hafiz', 'Academy of Graduate and Professional Studies (ACADEMY)', 'Curriculum Review', '2021-09-01 13:05:30', '2021-09-01 13:05:35', '', 'Urgent', 'Softcopy', 'Pending', 'Forward to director', 'kict user'),
 (1022, 'testr', 'me', 'Syazmi Hafiz', 'Academy of Graduate and Professional Studies (ACADEMY)', 'Curriculum Review', '2021-09-01 13:05:30', '2021-09-01 13:05:35', '', 'Urgent', 'Softcopy', 'Pending', 'Forward to director', 'kict user'),
-(1023, '23', 'me', 'Syazmi Hafiz', 'Academy of Graduate and Professional Studies (ACADEMY)', 'Curriculum Review', '2021-09-01 13:05:30', '2021-09-01 13:05:35', '', 'Urgent', 'Softcopy', 'Pending', 'Forward to director', 'kict user');
+(1023, '23', 'me', 'Syazmi Hafiz', 'Academy of Graduate and Professional Studies (ACADEMY)', 'Curriculum Review', '2021-09-01 13:05:30', '2021-09-01 13:05:35', '', 'Urgent', 'Softcopy', 'Pending', 'Forward to director', 'kict user'),
+(1025, 'Testing Document', 'Test Sender', 'Izzati Saharan', 'Academy of Graduate and Professional Studies (ACADEMY)', 'Curriculum Review', '2021-09-02 14:27:05', '2021-09-02 14:27:08', 'youtube.com', 'Urgent', 'Softcopy', 'Pending', 'To be reviewed', 'kict user');
 
 -- --------------------------------------------------------
 
@@ -153,7 +154,8 @@ INSERT INTO `doc_category` (`doc_cat_id`, `doc_cat_name`) VALUES
 (9, 'New Cycle Accreditation - Self-Accreditation'),
 (5, 'Provisional Accreditation (MQA-01) - Self-Accreditation'),
 (6, 'Provisional Accreditation (MQA-01)/Manual Professional Body'),
-(10, 'Renewal of Accreditation (Professional Body)');
+(10, 'Renewal of Accreditation (Professional Body)'),
+(34, 'testing category');
 
 -- --------------------------------------------------------
 
@@ -247,7 +249,9 @@ INSERT INTO `logs` (`id`, `doc_id`, `date_logged`, `doc_name`, `doc_sender`, `do
 (1147, 1017, '2021-01-15 09:53:15', 'MQA 01 Bachelor of Electrical Engineering', 'Dr. Syazmi', 'Siti Amrin', 'KOE', 'MQA 01 Document', '2021-01-15 17:51:27', '2021-01-23 17:51:30', 'Siti Amrin Desk', 'Urgent', 'Hardcopy', 'Completed', 'Completed', NULL),
 (1148, 1018, '2021-06-03 16:14:36', 'MQA 03 KOS', 'Br Shamir', 'Anis Asri', 'KOS', 'other', '2021-06-04 00:14:25', '2021-06-18 00:14:28', '', 'Urgent', 'Softcopy', 'Pending', 'To be reviewed', 'kict user'),
 (1149, 1022, '2021-09-01 05:08:07', 'testr', 'me', 'Syazmi Hafiz', 'Academy of Graduate and Professional Studies (ACADEMY)', 'Curriculum Review', '2021-09-01 13:05:30', '2021-09-01 13:05:35', '', 'Urgent', 'Softcopy', 'Pending', 'Forward to director', 'kict user'),
-(1150, 1023, '2021-09-01 05:09:13', '23', 'me', 'Syazmi Hafiz', 'Academy of Graduate and Professional Studies (ACADEMY)', 'Curriculum Review', '2021-09-01 13:05:30', '2021-09-01 13:05:35', '', 'Urgent', 'Softcopy', 'Pending', 'Forward to director', 'kict user');
+(1150, 1023, '2021-09-01 05:09:13', '23', 'me', 'Syazmi Hafiz', 'Academy of Graduate and Professional Studies (ACADEMY)', 'Curriculum Review', '2021-09-01 13:05:30', '2021-09-01 13:05:35', '', 'Urgent', 'Softcopy', 'Pending', 'Forward to director', 'kict user'),
+(1151, 1010, '2021-09-02 06:21:09', 'My Document', 'try 3', 'Izzati Saharan', 'KOS', 'Other', '2021-01-06 00:44:59', '2021-02-05 00:45:01', 'Front Desk, https://drive.google.com/file/d/1Mj5pflm7o18SmgMoHW-zgJ0Kk05_VM8C/view?usp=sharing ', 'Not Urgent', 'Softcopy and Hardcopy', 'Pending', 'Return to sender', 'Syazmi Hafiz'),
+(1153, 1025, '2021-09-02 06:28:04', 'Testing Document', 'Test Sender', 'Izzati Saharan', 'Academy of Graduate and Professional Studies (ACADEMY)', 'Curriculum Review', '2021-09-02 14:27:05', '2021-09-02 14:27:08', 'youtube.com', 'Urgent', 'Softcopy', 'Pending', 'To be reviewed', 'kict user');
 
 -- --------------------------------------------------------
 
@@ -297,8 +301,7 @@ ALTER TABLE `centre_of_studies`
 -- Indexes for table `documents`
 --
 ALTER TABLE `documents`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `doc_name` (`doc_name`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `doc_category`
@@ -342,19 +345,19 @@ ALTER TABLE `centre_of_studies`
 -- AUTO_INCREMENT for table `documents`
 --
 ALTER TABLE `documents`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1024;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1026;
 
 --
 -- AUTO_INCREMENT for table `doc_category`
 --
 ALTER TABLE `doc_category`
-  MODIFY `doc_cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `doc_cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `logs`
 --
 ALTER TABLE `logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1151;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1154;
 
 --
 -- AUTO_INCREMENT for table `users`
