@@ -56,9 +56,12 @@
                                 <h6 class="m-0 font-weight-bold text-white float-left">Document Category</h6>
                             </div> 
                         </div>
+                        <br>
 
-                        <a href="add_doc_cat.php" class="btn btn-primary">Add Document Category</a>
-
+                        <div class="d-flex justify-content-left">
+                            <a href="add_doc_cat.php" class="btn btn-primary" style="width: 20%; margin-left: 20px;">Add Document Category</a>
+                        </div>
+                        
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered hover" id="dataTable" width="100%" cellspacing="0">
@@ -348,15 +351,6 @@
                             //columns: ':visible'
                         },
                     },
-
-                    {
-                        text: 'My button',
-                        className: 'btn btn-primary',
-                        action: function ( e, dt, node, config ) {
-                            alert( 'Button activated' );
-                        },
-                        
-                    }
 
                     /*{
                         extend: 'colvis',

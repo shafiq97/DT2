@@ -334,11 +334,11 @@
                             <form action='add_announcement.php' method="post">
                                 <div class="collapse show" id="collapseCardExample">
                                      <?php 
-                                        include "C:\\xampp\htdocs\DTS2\includes\connect.php";
+                                        include "../../includes/connect.php";
 
                                         // SQL query to fetch information of registerd users and finds user match.
                                         $query = "SELECT * FROM announcement ORDER BY `date` DESC LIMIT 10 ";
-                                        $result = mysqli_query($conn,$query); 
+                                        $result = mysqli_query($conn,$query);
                                         
                                         while ($row = mysqli_fetch_array($result)) {
                                           $date = $row['date'];
@@ -348,7 +348,7 @@
                                           echo "<div class='card-body'>" ."Date: ".date("d-m-Y H:i:s", $formatted_date)."<br>".$row['message']. "</div>";
                                           echo "<br>";
                                         }
-                                        
+
                                         mysqli_close($conn); // Closing Connection
                                     ?>
                                 </div>

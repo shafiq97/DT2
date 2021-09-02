@@ -326,6 +326,7 @@
                                                   
                                                     echo "<tr>";
                                                     echo "<form method='post' target='_blank' action='track.php' id=track>";
+                                                    echo "<input type='hidden' value='".$row['doc_name']."' name='doc_name'>";
                                                     echo "<td name=doc_id>" . $row['id'] . "</td>";
                                                     echo "<td name='doc_name'>" . $row['doc_name'] . "</td>";
                                                     echo "<td name='doc_sender'>" . $row['doc_sender'] . "</td>";
@@ -334,6 +335,8 @@
                                                     echo "<td>" . date("D\, d-M-Y", $formatted_date) . "</td>";
                                                     echo "<td>" . date("D\, d-M-Y", $formatted_date2) . "</td>";
                                                     //echo "<td><button type='submit' name='save_button' value='".$row['doc_due']."'>Download</button></td>";
+
+
 
                                                     if (filter_var($row['doc_location'], FILTER_VALIDATE_URL) === FALSE) {
                                                         echo"<td><button class='btn btn-primary' form='track' name='link_error' value='".$row['doc_location']."'>View</button></td>";
@@ -874,12 +877,12 @@
             echo $comment;
             */
 
-            $pdfQuery = "SELECT pdfname from documents WHERE id='$id'";
-            $pdfResult = mysqli_query($conn,$pdfQuery);
+            // $pdfQuery = "SELECT pdfname from documents WHERE id='$id'";
+            // $pdfResult = mysqli_query($conn,$pdfQuery);
 
-            while ($row = mysqli_fetch_array($pdfResult)) {
-              $pdfname = $row['pdfname'];
-            }
+            // while ($row = mysqli_fetch_array($pdfResult)) {
+            //   $pdfname = $row['pdfname'];
+            // }
 
        
             $query = 
@@ -908,8 +911,8 @@
             }
 
             $query2 = "INSERT INTO logs 
-            (doc_id,doc_name,doc_sender,doc_responsibility, doc_kulliyah, doc_description, doc_receive, doc_due, doc_location, doc_attention, doc_characteristic, doc_status, doc_comment, pdfname, owner)
-            VALUES ('$id','$doc_name', '$sender', '$responsibility', '$kulliyah', '$description', '$date_receive', '$due_date', '$location', '$attention', '$characteristic', '$status', '$comment', '$pdfname', '$owner')";
+            (doc_id,doc_name,doc_sender,doc_responsibility, doc_kulliyah, doc_description, doc_receive, doc_due, doc_location, doc_attention, doc_characteristic, doc_status, doc_comment, owner)
+            VALUES ('$id','$doc_name', '$sender', '$responsibility', '$kulliyah', '$description', '$date_receive', '$due_date', '$location', '$attention', '$characteristic', '$status', '$comment', '$owner')";
 
             //$query = "UPDATE users SET role_name='$role' WHERE name='$user'";
             if ($conn->query($query2) === TRUE) {

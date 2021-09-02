@@ -332,8 +332,11 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 black">
-                            <?php $doc_id = $_POST['trackBtn'] ?>
-                            <h6 class="m-0 font-weight-bold text-white">Logs for Document ID <?php echo $doc_id?></h6>
+                            <?php 
+                                $doc_id = $_POST['trackBtn'];
+                                $doc_name = $_POST['doc_name'];
+                            ?>
+                            <h6 class="m-0 font-weight-bold text-white">Logs for Document : <?php echo $doc_name ." with ID ".$doc_id; ?></h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -365,7 +368,7 @@
 
                                     <tbody>
                                         <?php 
-                                            include "C:\\xampp\htdocs\DTS2\includes\connect.php";
+                                            include "../../includes/connect.php";
 
                                             // SQL query to fetch information of registerd users and finds user match.
                                             $currentName  = $_SESSION["name"];
