@@ -50,11 +50,12 @@
     </a>
 
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-        <form action="report.php" method="post">
+        <form action="report1.php" method="post">
             <div class="bg-light py-2 collapse-inner rounded">
                 <button class="btn collapse-item" type="submit" name="month">Received this month</button>
                 <button class="btn collapse-item" type="submit" name="year">Received this year</button>
-                <button class="btn collapse-item" type="submit" name="assignee">Recevied assignee</button>
+                <button class="btn collapse-item" type="submit" name="assignee">Received assignee</button>
+                <button class="btn collapse-item" type="submit" name="assignee">Statistic</button>
             </div>
         </form>
     </div>
