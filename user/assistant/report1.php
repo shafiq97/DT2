@@ -217,6 +217,48 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid" id="container-fluid">
+                    
+                    <form action ="report1.php" method = "POST">
+                        <table>
+                            <tr>
+                                <th>ID</th>
+                                <th>Document Name </th>
+                                <th>Document Sender </th>
+                                <th>Responsibility </th>
+                                <th>Kulliyah </th>
+                                <th>Description </th>
+                                <th>Year </th>
+                                <th>Location </th>
+                                <th>Attention </th>
+                                <th>Characteristic </th>
+                                <th>Status </th>
+                                <th>owner </th>
+                            </tr>
+
+                            <tr>
+                                <td><input type ="text" placeholder ="ID" name="id"></td>
+                                <td><input type ="text" placeholder ="Document Name" name="name"></td>
+                                <td><input type ="text" placeholder ="Document Sender" name="sender"></td>
+                                <td><input type ="text" placeholder ="Responsibility" name="responsibility"></td>
+                                <td><input type ="text" placeholder ="Kulliyah" name="kulliyah"></td>
+                                <td><input type ="text" placeholder ="Description" name="description"></td>
+                                <td><input type ="text" placeholder ="Year" name="year"></td>
+                                <td><input type ="text" placeholder ="Location" name="location"></td>
+                                <td><input type ="text" placeholder ="Attention" name="attention"></td>
+                                <td><input type ="text" placeholder ="Characteristic" name="characteristic"></td>
+                                <td><input type ="text" placeholder ="Status" name="status"></td>
+                                <td><input type ="text" placeholder ="owner" name="owner"></td>
+                            </tr>
+                              
+                            <tr>
+                                <td>
+                                     <br><button type="submit"  name ="submit">Search</button>       
+                                </td>    
+                            </tr>
+                        </table>
+                    </form> 
+
+                                        
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -246,6 +288,107 @@
 
                                             include "../../includes/connect.php";
 
+
+                                            if(isset($_POST['submit'])){
+                                                $ID = $_POST['id'];
+                                                $Name = $_POST['name'];
+                                                $Sender = $_POST['sender'];
+                                                $Responsibility = $_POST['responsibility'];
+                                                $Kulliyah = $_POST['kulliyah'];
+                                                $Description = $_POST['description'];
+                                                $Year = $_POST['year'];
+                                                $Location = $_POST['location'];
+                                                $Attention = $_POST['attention'];
+                                                $Characteristic = $_POST['characteristic'];
+                                                $Status = $_POST['status'];
+                                                $owner = $_POST['owner'];
+
+                                                $stat = "";
+                                                echo "id=" . $ID;   
+
+                                                if(!empty($ID)){
+                                                    $stat = $stat . " AND id='" . $ID . "'"; 
+                                                    
+                                                }
+                                                if(!empty($Name)){
+                                                    $stat = $stat . " AND doc_name='" . $Name . "'";
+                                                }
+                                                if(!empty($Sender)){
+                                                    $stat = $stat . " AND doc_sender='" . $Sender . "'";
+                                                }
+                                                if(!empty($Responsibility)){
+                                                    $stat = $stat . " AND doc_responsibility='" . $Responsibility . "'";
+                                                }
+                                                if(!empty($Kulliyah)){
+                                                    $stat = $stat . " AND doc_kulliyah='" . $Kulliyah . "'";
+                                                }
+                                                if(!empty($Description)){
+                                                    $stat = $stat . " AND doc_description='" . $Description . "'";
+                                                }
+                                                if(!empty($Year)){
+                                                    $stat = $stat . " AND doc_receive='" . $Year . "'";
+                                                }
+                                                if(!empty($Location)){
+                                                    $stat = $stat . " AND doc_location='" . $Location . "'";
+                                                }
+                                                if(!empty($Attention)){
+                                                    $stat = $stat . " AND doc_attention='" . $Attention . "'";
+                                                }
+                                                if(!empty($Characteristic)){
+                                                    $stat = $stat . " AND doc_characteristic='" . $Characteristic . "'";
+                                                }
+                                                if(!empty($Status)){
+                                                    $stat = $stat . " AND doc_status='" . $Status . "'";
+                                                }
+                                                if(!empty($owner)){
+                                                    $stat = $stat . " AND owner='" . $owner . "'";
+                                                }
+
+
+                                                echo $stat;
+
+                                                // if(!empty($ID)){
+                                                //     $stat = $stat . "AND id='" . $ID . "'";
+                                                    
+                                                // }
+                                                // if($Name != ""){
+                                                //     $stat = $stat . "AND doc_name='" . $Name . "'";
+                                                // }
+                                                // if($Sender != "" && $Sender != NULL){
+                                                //     $stat = $stat . "AND doc_sender='" . $Sender . "'";
+                                                // }
+                                                // if($Responsibility != "" && $Responsibility != NULL){
+                                                //     $stat = $stat . "AND doc_responsibility='" . $Responsibility + "'";
+                                                // }
+                                                // if($Kulliyah != "" && $Kulliyah != NULL){
+                                                //     $stat = $stat . "AND doc_kulliyah='" . $Kulliyah + "'";
+                                                // }
+                                                // if($Description != "" && $Description != NULL){
+                                                //     $stat = $stat . "AND doc_description='" . $Description . "'";
+                                                // }
+                                                // if($Year != "" && $Year != NULL){
+                                                //      $stat = $stat . "AND YEAR(doc_receive)='" . $Year . "'";
+                                                // }
+                                                // if($Location != "" && $Location != NULL){
+                                                //     $stat = $stat . "AND doc_location='" . $Location . "'";
+                                                // }
+                                                // if($Attention != "" && $Attention != NULL){
+                                                //     $stat = $stat . "AND doc_attention='" . $Attention . "'";
+                                                // }
+                                                // if($Characteristic != "" && $Characteristic != NULL){
+                                                //     $stat = $stat . "AND doc_characteristic='" . $Characteristic . "'";
+                                                // }
+                                                // if($Status != "" && $Status != NULL){
+                                                //     $stat = $stat . "AND doc_status='" . $Status . "'";
+                                                // }
+                                                // if($owner != "" && $owner != NULL){
+                                                //     $stat = $stat . "AND owner='" . $owner . "'";
+                                                // }
+                                            }
+                                             
+
+
+
                                             $currentMonth = date('m');
                                             $currentYear = date('Y');
                                             $currentName = $_SESSION['name'];
@@ -260,7 +403,15 @@
                                                 //echo "<form method='post' target='_blank' action='track.php'>";
                                                 echo "<td name=doc_id>" . $month . "</td>";
 
-                                                $query = "SELECT COUNT(id) AS MYCOUNT FROM documents WHERE YEAR(doc_receive) = $currentYear AND MONTH(doc_receive) = $month_number" ;
+                                                //echo $query;
+
+                                                if(isset($_POST['submit'])){
+                                                    //$query = "SELECT COUNT(id) AS MYCOUNT FROM documents WHERE MONTH(doc_receive) = $month_number ";
+                                                    $query = "SELECT COUNT(id) AS MYCOUNT FROM documents WHERE YEAR(doc_receive) = $currentYear AND MONTH(doc_receive) = $month_number" . "$stat" ;
+                                                
+                                                }
+
+                                                
                                                 $result = mysqli_query($conn,$query); 
 
                                                 while ($row = mysqli_fetch_array($result)) {
@@ -270,6 +421,8 @@
                                                 echo "</tr>";
 
                                             }
+
+
 
                                             // if(isset($_POST['month'])){
                                             //     //echo $currentMonth;
@@ -292,7 +445,7 @@
                                             // }
 
                                             // SQL query to fetch information of registerd users and finds user match.
-                                            $currentName = $_SESSION["name"];
+                                            //$currentName = $_SESSION["name"];
                                             //$query = "SELECT * FROM documents WHERE doc_responsibility ='$currentName'";
                                             //$query = "SELECT * FROM documents";
 
@@ -616,6 +769,12 @@
 
     <script type="text/javascript">
 
+        //filter statistic
+
+
+
+
+
         //var tbl = $('#dataTable');
         $(document).ready(function() {
             
@@ -638,6 +797,7 @@
                                 .draw();
                         }
                     });
+
                 }
             });   
 
@@ -671,23 +831,27 @@
                 "order": [[ 3, "asc" ]],
                 "pageLength": 50,
                 dom: 'Bfrtip',
+                "oTableTools": {
+                        "aButtons": [
+                            {'sExtends':'copy',
+                            "oSelectorOpts": { filter: 'applied', order: 'current' },
+                            },
+                            {'sExtends':'xls',
+                            "oSelectorOpts": { filter: 'applied', order: 'current' },
+                            },
+                            {'sExtends':'print',
+                            "oSelectorOpts": { filter: 'applied', order: 'current' },
+                            }
+                        ]
+                },
                 buttons: [
                     {
                         extend: 'pdf',
                         exportOptions:{
                             columns: [ 0, 1, 2, 3, 4, 5, 6 ]
                         }
-                        /*customize : function(doc){
-                            var colCount = new Array();
-                            $(tbl).find('tbody tr:first-child td').each(function(){
-                                if($(this).attr('colspan')){
-                                    for(var i=1;i<=$(this).attr('colspan');$i++){
-                                        colCount.push('*');
-                                    }
-                                }else{ colCount.push('*'); }
-                            });
-                            doc.content[1].table.widths = colCount;
-                        }*/
+                      
+        },
                     },
 
                     {

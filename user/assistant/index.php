@@ -925,7 +925,32 @@
         //var tbl = $('#dataTable');
         $(document).ready(function() {
             
-            // Setup - add a text input to each footer cell
+            $('#dataTable').DataTable({
+                initComplete: function (){ 
+                    this.api().columns().every( function (i) {
+                        if(i<=6){
+                            var column = this;
+                            var select = $('<select><option value=""></option></select>')
+                                .appendTo( $(column.footer()).empty() )
+                                .on( 'change', function () {
+                                    var val = $.fn.dataTable.util.escapeRegex($(this).val());
+                                    column
+                                        .search( val ? '^'+val+'$' : '', true, false )
+                                        .draw();
+                                })
+                            
+                                column.data().unique().sort().each( function ( d, j ) {
+                                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                                });
+                        }
+                    });
+                },
+
+               
+                
+            });
+
+            // Clone to thead
             $('#dataTable thead tr').clone(true).appendTo( '#dataTable thead' );
 
             $('#dataTable thead tr:eq(0) th').each( function (i){
