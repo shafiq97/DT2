@@ -55,6 +55,7 @@
                 <button class="btn collapse-item" type="submit" name="month">Received this month</button>
                 <button class="btn collapse-item" type="submit" name="year">Received this year</button>
                 <button class="btn collapse-item" type="submit" name="assignee">Recevied assignee</button>
+                <button class="btn collapse-item" type="submit" name="custom">Custom Filter</button>
             </div>
         </form>
     </div>

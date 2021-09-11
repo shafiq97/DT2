@@ -1,5 +1,5 @@
 <!-- Topbar -->
-<nav class="navbar navbar-expand navbar-light black topbar mb-4 static-top shadow">
+<nav class="navbar navbar-expand navbar-light topbar mb-4 static-top shadow">
 
 <!-- Sidebar Toggle (Topbar) -->
 <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -13,7 +13,6 @@
 
 <!-- Topbar Navbar -->
 <ul class="navbar-nav ml-auto black">
-
     <!-- Nav Item - Search Dropdown (Visible Only XS) -->
     <li class="nav-item dropdown no-arrow d-sm-none">
         <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
@@ -37,7 +36,6 @@
             </form>
         </div>
     </li>
-
     <!-- Nav Item - Alerts -->
     <li class="nav-item dropdown no-arrow mx-1">
         <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
@@ -76,7 +74,6 @@
             </a>
         </div>
     </li>
-
     <!-- Nav Item - Messages -->
     <li class="nav-item dropdown no-arrow mx-1">
         <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
@@ -116,9 +113,7 @@
             </a>
         </div>
     </li>
-
     <div class="topbar-divider d-none d-sm-block"></div>
-
     <!-- Nav Item - User Information -->
     <li class="nav-item dropdown no-arrow">
         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
@@ -137,8 +132,6 @@
             </a>
         </div>
     </li>
-
 </ul>
-
 </nav>
 <!-- End of Topbar -->

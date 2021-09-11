@@ -1,12 +1,21 @@
-<?php
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+<body>
+  
+</body>
+</html>
 
-    
+<?php
+    // ini_set('display_errors', 1);
+    // ini_set('display_startup_errors', 1);
+    // error_reporting(E_ALL);
 
     class Login{
-
       public function LoginSystem(){
         session_start();
         $error = '';
@@ -79,8 +88,17 @@
         header("Location:../user/owner/");
       }
       else {
-        header("Location:../404.html");
-        session_destroy();
+        ?>
+          <script>
+              swal({
+                  title: "Wrong username or password",
+                  text: "",
+                  icon: "error"
+              }).then(function() {
+                  window.location = "../index.php";
+              });
+          </script>
+        <?php
       }
     }
 }

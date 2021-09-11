@@ -6,6 +6,12 @@ body {
   background-color: #50C8B5;
   height: 100vh;
 }
+
+p{
+  font-family: "Anton", sans-serif;
+  font-size: 50px;
+  text-align: center;
+}
 .rwcenter{
   height: 100vh;
   display: flex;
