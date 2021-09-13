@@ -19,8 +19,6 @@
     $query5 = "SELECT doc_status FROM documents where (doc_responsibility='$name') AND (MONTH(doc_receive) ='$month')";
     $result5 = mysqli_query($conn,$query5);
     $docMonths = mysqli_num_rows($result5);
-    //mysqli_free_result($result);
-    //echo $row;
 
     $query7 = "SELECT doc_status FROM documents where (doc_responsibility='$name') AND (doc_status='Rejected')";
     $result7 = mysqli_query($conn,$query7);
@@ -44,12 +42,7 @@
         $announcement_date = date("Y-m-d",strtotime($row2['date']));
         if($today_date === $announcement_date){
             $count++;
-            //echo $today_date ." ". $announcement_date;
-            //echo $row2['message'];
         }
-        //$date = $row['date'];
-        //$formatted_date = strtotime($date);
-        //echo "<td id='".$row['login']."'>". $row['login'] ."</td>";
     }
 ?>
 
@@ -76,33 +69,28 @@
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css"> -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css">
     
     <!-- Custom styles for this page -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.6/css/responsive.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.bootstrap4.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 
 </head>
 
 <body id="page-top">
-
     <!-- Page Wrapper -->
     <div id="wrapper">
-
         <?php include "sidebar.php"; ?>
-
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column ">
-
             <!-- Main Content -->
             <div id="content">
                 <?php include "topbar.php"; ?>
@@ -131,7 +119,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <!-- Director -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-danger shadow h-100 py-2">
@@ -149,7 +136,6 @@
                                 </div>
                             </div>
                         </div> 
-
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-success shadow h-100 py-2">
@@ -167,7 +153,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-info shadow h-100 py-2">
@@ -190,7 +175,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-info shadow h-100 py-2">
                                 <div class="card-body">
@@ -207,7 +191,6 @@
                                 </div> 
                             </div>
                         </div>
-
                         <!-- Users with no roles -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-success shadow h-100 py-2" >
@@ -230,7 +213,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <!-- Pending Requests Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-danger shadow h-100 py-2">
@@ -248,7 +230,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-warning shadow h-100 py-2">
                                 <div class="card-body">
@@ -265,20 +246,17 @@
                                 </div>
                             </div> 
                         </div>
-                                
-                    <!-- Content Row -->
-                        <!-- Area Chart -->
                         <div class="col-lg-12">
                         <!-- Collapsable Card Example -->
                         <div class="card shadow mb-4">
                             <!-- Card Header - Accordion -->
-                            <a href="#collapseCardExample" class="d-block card-header black" data-toggle="collapse"
+                            <a href="#collapseCardExample" class="d-block card-header blue" data-toggle="collapse"
                                 role="button" aria-expanded="true" aria-controls="collapseCardExample">
                                 <h6 class="m-0 font-weight-bold text-white">Your Pending Documents:</h6>
                             </a>
                             <br>
                             <!-- Card Content - Collapse -->
-                            <form method="post pt-10">
+                            <form method="post" class="pl-4 pr-4">
                                 <div class="collapse show" id="collapseCardExample">
                                     <table class="table table-bordered hover" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
@@ -304,16 +282,15 @@
                                                 <th>Status</th>
                                                 <th>Received</th>
                                                 <th>Due Date</th>
-                                                <th>View</th>
-                                                <th>Edit</th>
-                                                <th>Track</th> 
+                                                <th></th>
+                                                <th></th>
+                                                <th></th> 
                                             </tr>
                                         </tfoot>
 
                                         <tbody>
                                             <?php
                                                 include '../../includes/connect.php';
-
                                                 $currentName = $_SESSION["name"];
                                                 $query = "SELECT * FROM documents WHERE doc_responsibility = '$currentName' and doc_status = 'Pending'";
                                                 $result = mysqli_query($conn,$query); 
@@ -339,16 +316,16 @@
 
 
                                                     if (filter_var($row['doc_location'], FILTER_VALIDATE_URL) === FALSE) {
-                                                        echo"<td><button class='btn btn-primary' form='track' name='link_error' value='".$row['doc_location']."'>View</button></td>";
+                                                        echo"<td><button class='btn btn-primary btn-block' form='track' name='link_error' value='".$row['doc_location']."'>View</button></td>";
                                                     }
                                                     else{
-                                                        echo"<td><a href='".$row['doc_location']."' target='_blank' class='btn btn-primary'>View</a></td>";
+                                                        echo"<td><a href='".$row['doc_location']."' target='_blank' class='btn btn-primary btn-block'>View</a></td>";
                                                     }
 
-                                                    echo "<td><button class='btn btn-success' data-toggle='modal' data-target='#doc-".$row['id']."' type='button' name='save_button' value='".$row['id']."'>Edit</button>
+                                                    echo "<td><button class='btn btn-success btn-block' data-toggle='modal' data-target='#doc-".$row['id']."' type='button' name='save_button' value='".$row['id']."'>Edit</button>
                                                             </td>";
 
-                                                    echo "<td><button class='btn btn-dark' type='submit' name='trackBtn' form='track' value='".$row['id']."'>Track</button>
+                                                    echo "<td><button class='btn btn-dark btn-block' type='submit' name='trackBtn' form='track' value='".$row['id']."'>Track</button>
                                                             </td>";
 
                                                     echo "</form>";
@@ -582,7 +559,7 @@
                                                             </div>
                                                         </div>";
                                                 }
-                                                mysqli_close($conn); // Closing Connection  
+                                                mysqli_close($conn);
                                             ?>
                                         </tbody>
                                     </table> 
@@ -591,22 +568,19 @@
                         </div>
                         <div class="card shadow mb-4">
                             <!-- Card Header - Accordion -->
-                            <a href="#collapseCardExample2" class="d-block card-header py-3 black" data-toggle="collapse"
+                            <a href="#collapseCardExample2" class="d-block card-header py-3 blue" data-toggle="collapse"
                                 role="button" aria-expanded="true" aria-controls="collapseCardExample">
                                 <h6 class="m-0 font-weight-bold text-white">Announcement History:</h6>
                             </a>
                             <!-- Card Content - Collapse -->
-                            <form method="post">
+                            <form method="post" class="pl-4 pr-4 pt-4">
                                 <div class="collapse show" id="collapseCardExample2">
                                      <?php 
                                         include '../../includes/connect.php';
-
-                                        // SQL query to fetch information of registerd users and finds user match.
-                                        $query = "SELECT * FROM announcement ORDER BY `date` DESC LIMIT 5";
+                                        $query = "SELECT * FROM announcement ORDER BY `date`";
                                         $result = mysqli_query($conn,$query);
-                                        ?>
-
-                                            <table id="announcement_table" class="display" style="width:100%">
+                                    ?>
+                                            <table id="announcement_table" class="table table-bordered hover display" style="width:100%">
                                                 <thead>
                                                     <tr>
                                                         <th>Date</th>
@@ -631,7 +605,7 @@
                                                 </tbody>
                                             </table>
                                         <?php
-                                        mysqli_close($conn); // Closing Connection
+                                        mysqli_close($conn);
                                     ?>
                                 </div>
                             </form>
@@ -697,12 +671,8 @@
     <!-- <script src="vendor/chart.js/Chart.min.js"></script> -->
 
     <!-- Page level custom scripts -->
-    <!-- <script src="js/demo/chart-area-demo.js"></script> -->
-    <!-- <script src="js/demo/chart-pie-demo.js"></script> -->
-    <!-- <script src="js/demo/datatables-demo.js"></script> -->
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.6.5/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.0.0/js/dataTables.buttons.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.flash.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/vfs_fonts.js"></script>
@@ -712,6 +682,7 @@
     <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.bootstrap4.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.6/js/dataTables.responsive.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/select/1.3.3/js/dataTables.select.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
 
     <script type="text/javascript">
@@ -719,8 +690,9 @@
         //var tbl = $('#dataTable');
         $(document).ready(function() {
             
+            $('#dataTable').DataTable();
             $('#announcement_table').DataTable();
-        
+
             // Setup - add a text input to each footer cell
             $('#dataTable thead tr').clone(true).appendTo( '#dataTable thead' );
 
@@ -741,14 +713,14 @@
                         }
                     });
                 }
-            });   
+            });
 
             $('#dataTable').DataTable().destroy();
      
             var table = $('#dataTable').DataTable({
                 initComplete: function (){ 
                     this.api().columns().every( function (i) {
-                        if(i<=6){
+                        if(i<=6 && i!=0 && i!=1){
                             var column = this;
                             var select = $('<select><option value=""></option></select>')
                                 .appendTo( $(column.footer()).empty() )
@@ -758,7 +730,6 @@
                                         .search( val ? '^'+val+'$' : '', true, false )
                                         .draw();
                                 })
-                            
                                 column.data().unique().sort().each( function ( d, j ) {
                                     select.append( '<option value="'+d+'">'+d+'</option>' )
                                 });
@@ -771,9 +742,10 @@
 
             $('#dataTable').DataTable({
                 "order": [[ 3, "asc" ]],
-                "pageLength": 50,
-                dom: 'Bfrtip',
-                /* buttons: [
+                "pageLength": 10,
+                dom: 'lBfrtip',
+
+                buttons: [
                     {
                         extend: 'pdf',
                         exportOptions:{
@@ -807,19 +779,11 @@
                             //columns: ':visible'
                         },
                     },
-
-                    {
-                        extend: 'colvis',
-                        exportOptions:{
-                            columns: [ 0, 1, 2, 3, 4 ]
-                        }
-                    }
-                ], */
+                ],
                 responsive: true,
+                select: true,
             })
             table.buttons().container().appendTo( '#dataTable_wrapper .col-sm-6:eq(1)' );
-
-            
         });
     </script>
 
@@ -860,29 +824,6 @@
             }
             
             $comment        = $_POST['comment'];
-
-            /*
-            echo $id;
-            echo $doc_name;
-            echo $sender;
-            echo $responsibility;
-            echo $kulliyah;
-            echo $description;
-            echo $date_receive;
-            echo $due_date;
-            echo $location;
-            echo $attention;
-            echo $characteristic;
-            echo $status;
-            echo $comment;
-            */
-
-            // $pdfQuery = "SELECT pdfname from documents WHERE id='$id'";
-            // $pdfResult = mysqli_query($conn,$pdfQuery);
-
-            // while ($row = mysqli_fetch_array($pdfResult)) {
-            //   $pdfname = $row['pdfname'];
-            // }
 
        
             $query = 

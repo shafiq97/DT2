@@ -7,12 +7,12 @@
 </button>
 
 <!-- Topbar Search -->
-<div>
-  Document Tracking System
+<div class="text-primary">
+    <a href="index.php">Document Tracking System</a>
 </div>
 
 <!-- Topbar Navbar -->
-<ul class="navbar-nav ml-auto black">
+<ul class="navbar-nav ml-auto">
     <!-- Nav Item - Search Dropdown (Visible Only XS) -->
     <li class="nav-item dropdown no-arrow d-sm-none">
         <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
@@ -51,19 +51,16 @@
                 Alerts Center
             </h6>
             <a class="dropdown-item d-flex align-items-center" href="index.php">
-                <div class="mr-3">
-                    <div class="icon-circle bg-primary">
-                        <i class="fas fa-file-alt text-white"></i>
-                    </div>
-                </div>
                 <div>
                     <?php 
                         include '../../includes/connect.php';
                         $query6 = "SELECT * FROM documents WHERE (doc_responsibility = '".$_SESSION['name']."') AND (doc_status = 'Pending')";
                         $result6 = mysqli_query($conn,$query6);
+                        $i = 1;
                         echo"<div class='small text-gray-500'> ".date('D\, d-M-Y')."</div>";
-                        echo"<span class='font-weight-bold'>You have ".$row." pending documents </span>";
+                        echo"<span class='font-weight-bold'>You have ".$row." pending documents </span><br>";
                         while ($row6 = mysqli_fetch_array($result6)) {
+                            echo $i++ . ". ";
                             echo $row6['doc_name']; 
                             echo "<br>";
                             echo $row6['doc_comment']; 
@@ -102,11 +99,6 @@
                             echo date("D\, d-M-Y", strtotime($today_date1));
                             echo"<div class='text-truncate'>".$row3['message']."</div><br>";
                         }
-
-                        //$date = $row['date'];
-                        //$formatted_date = strtotime($date);
-
-                        //echo "<td id='".$row['login']."'>". $row['login'] ."</td>";
                     }
                 ?>
                 </div>
@@ -118,9 +110,10 @@
     <li class="nav-item dropdown no-arrow">
         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span class="mr-2 d-none d-lg-inline text-white-600 small"><?php echo $_SESSION['name']?></span>
-            <img class="img-profile rounded-circle"
-                src="img/undraw_profile.svg">
+            <div >
+                <span class="mr-2 d-none d-lg-inline text-primary"><?php echo $_SESSION['name']?></span>
+            </div>
+            <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
         </a>
         <!-- Dropdown - User Information -->
         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

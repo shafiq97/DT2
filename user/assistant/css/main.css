@@ -1,14 +1,24 @@
 .all{
-font-family: "Nunito", sans-serif;
+    font-family: "Nunito", sans-serif;
 }
 
 .uia{
-background: #50C8B5;
-color: black;
+    background: #243E56;
+    color:white;
 }
 
 .black{
     background: #6C6C6C;
+    color: white;
+}
+
+.blue{
+    background: #455b70;
+    color: white;
+}
+
+.semi-blue{
+    background: #7726E0;
     color: white;
 }
 

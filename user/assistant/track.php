@@ -23,14 +23,7 @@
             $announcement_date = date("Y-m-d",strtotime($row2['date']));
             if($today_date === $announcement_date){
                 $count++;
-                //echo $today_date ." ". $announcement_date;
-                //echo $row2['message'];
             }
-
-            //$date = $row['date'];
-            //$formatted_date = strtotime($date);
-
-            //echo "<td id='".$row['login']."'>". $row['login'] ."</td>";
         }
     }   
 ?>

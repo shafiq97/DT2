@@ -22,10 +22,7 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
-
-
 <body id="page-top">
-
     <!-- Page Wrapper -->
     <div id="wrapper">
         <?php include 'sidebar.php'; ?>
@@ -43,7 +40,7 @@
                                 <!-- Collapsable Card Example -->
                                 <div class="card shadow mb-4">
                                     <!-- Card Header - Accordion -->
-                                    <a href="#collapseCardExample" class="d-block card-header py-3 black" data-toggle="collapse"
+                                    <a href="#collapseCardExample" class="d-block card-header py-3 blue" data-toggle="collapse"
                                         role="button" aria-expanded="true" aria-controls="collapseCardExample">
                                         <h6 class="font-weight-bold text-white px-4">Add Document:<span> * Required Fill </span></h6>
                                     </a>
@@ -355,10 +352,7 @@
               echo "Error updating record: " . $conn->error;
             }
             mysqli_close($conn); // Closing Connection
-        } 
-
-        
-
+        }
     ?>
 
 </body>
