@@ -50,12 +50,16 @@
                 <div class="container-fluid" id="container-fluid">
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3 black">
+                        <div class="card-header py-3 blue">
                             <div>
-                                <h6 class="m-0 font-weight-bold text-white float-left">Centre of Studies</h6>
+                                <h6 class="m-0 font-weight-bold text-white float-left">Name of the Kulliyyah/Centre/Institute (K/C/I)<</h6>
                             </div> 
                         </div>
-                        <a href="add_cos.php" class="btn btn-primary">Add Centre of Studies</a>
+
+                        <div class="d-flex justify-content-left">
+                            <a href="add_cos.php" class="btn btn-primary" style="width: 20%; margin-left: 20px;">Add Kulliyyah/Centre/Institute (K/C/I)</a>
+                        </div>
+
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered hover" id="dataTable" width="100%" cellspacing="0">

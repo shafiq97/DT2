@@ -39,16 +39,20 @@
                                     <!-- Card Header - Accordion -->
                                     <a href="#collapseCardExample" class="d-block card-header py-3 blue" data-toggle="collapse"
                                         role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                                        <h6 class="font-weight-bold text-white px-4">Add Document Category:<span> * Required Fill </span></h6>
+                                        <h6 class="font-weight-bold text-white px-4">Add Programme:<span> * Required Fill </span></h6>
                                     </a>
                                     <!-- Card Content - Collapse -->
                                     <div class="collapse show" id="collapseCardExample">
                                         <div class="form-group px-5 pt-2">
-                                            <label for="doc_name">Category Name *</label>
-                                            <input type="text" class="form-control" id="doc_cat_name" name="doc_cat_name" required autocomplete="off">
+                                            <label for="programme_name">Programme Name *</label>
+                                            <input type="text" class="form-control" id="programme_name" name="programme_name" required autocomplete="off">
                                         </div>
                                         <div class="form-group px-5 pt-2">
-                                            <button type="submit" class="btn uia" style="color:white" value="Add" name="add_doc_cat_submit">Add</button>
+                                            <label for="programme_code">Programme Code *</label>
+                                            <input type="text" class="form-control" id="programme_code" name="programme_code" required autocomplete="off">
+                                        </div>
+                                        <div class="form-group px-5 pt-2">
+                                            <button type="submit" class="btn uia" style="color:white" value="Add" name="add_programme_submit">Add</button>
                                         </div>
                                     </div>     
                                 </div>

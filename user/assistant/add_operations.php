@@ -117,6 +117,51 @@
         }
     }
 
+    if (isset($_POST['add_programme_submit'])) {
+        include '../../includes/connect.php';
+
+        // prepare and bind
+        $stmt = $conn->prepare("INSERT INTO programmes (programme_name, programme_code) VALUES (?,?)");
+
+        if($stmt === false){
+            ?>
+                <script>
+                    swal({
+                        title: "Error inserting programme",
+                        text: "Please contact admin",
+                        icon: "error"
+                    }).then(function() {
+                        window.location = "add_programme.php";
+                    });
+                </script>
+            <?php
+        }
+        else{
+            $stmt->bind_param("ss", $programme_name, $programme_code);
+
+            // set parameter
+            $programme_name = $_POST['programme_name'];
+            $programme_code = $_POST['programme_code'];
+
+            // execute
+            $stmt->execute();
+            $stmt->close();
+            $conn->close();
+
+            ?>
+                <script>
+                    swal({
+                        title: "Record inserted",
+                        text: "",
+                        icon: "success"
+                    }).then(function() {
+                        window.location = "programme_view.php";
+                    });
+                </script>
+            <?php
+        }
+    }
+
 ?>
 </html>
 

@@ -18,6 +18,10 @@
   {
     header("Location: centre_of_studies_view.php");
   }
+  else if (isset($_POST['programme_view']))
+  {
+    header("Location: programme_view.php");
+  }
 
   //update to logs
       $query2 = "INSERT INTO logs 

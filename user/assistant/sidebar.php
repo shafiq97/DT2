@@ -71,9 +71,9 @@
     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
         <form action="configuration.php" method="post">
             <div class="bg-light py-2 collapse-inner rounded">
-                <button class="btn" type="submit" name="doc_cat_view">Document Category</button>
-                <button class="btn" type="submit" name="centre_of_studies_view">Centre of Studies</button>
-                <button class="btn" type="submit" name="delete_doc_cat">Delete Document Category</button>
+                <button class="btn" type="submit" name="doc_cat_view" style="font-size: 15px;">Document Category</button>
+                <button class="btn" type="submit" name="centre_of_studies_view" style="font-size: 15px;">Kulliyyah/Centre/Institute</button>
+                <button class="btn" type="submit" name="programme_view" style="font-size: 15px;">Programme</button>
             </div>
         </form>
     </div>

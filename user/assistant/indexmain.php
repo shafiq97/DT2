@@ -47,8 +47,13 @@
                                     <!-- Card Content - Collapse -->
                                     
                                     <div class="collapse show" id="collapseCardExample">
+
                                         <div class="form-group px-5 pt-2">
-                                            <label for="cos">Centre of Studies</label>
+                                            <label for="doc_name">Reference Number</label>
+                                            <input type="text" class="form-control" id="doc_name" name="doc_name" required autocomplete="off">
+                                        </div>
+                                        <div class="form-group px-5 pt-2">
+                                            <label for="cos">Kulliyyah/Centre/Institute (K/C/I)</label>
                                             <select  name="kuliyyah" class="form-control">
                                             <?php
                                                 $sql = "SELECT * FROM centre_of_studies";
@@ -62,6 +67,25 @@
                                             ?>
                                             </select>
                                             <!--<input type="" class="form-control" id="doc_desc" name="doc_desc">-->
+                                        </div>
+
+                                        <div class="form-group px-5 pt-2">
+                                            <label for="doc_attention">Type of meeting</label>
+                                            <select class="form-control" id="doc_attention" name="doc_attention">
+                                              <option>Meeting 1</option>
+                                              <option>Meeting 2</option>
+                                              <option>Meeting 3</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group px-5 pt-2">
+                                            <label for="receive_date">Meeting Date *</label>
+                                            <input type="datetime-local" step="1" class="form-control" id="receive_date" name="receive_date" required>
+                                        </div>
+
+                                        <div class="form-group px-5 pt-2">
+                                            <label for="receive_date">Dateline of Submission *</label>
+                                            <input type="datetime-local" step="1" class="form-control" id="receive_date" name="receive_date" required>
                                         </div>
 
                                         <div class="form-group px-5 pt-2">
@@ -82,6 +106,31 @@
                                         </div>
 
                                         <div class="form-group px-5 pt-2">
+                                            <label for="programme">Programmes</label>
+                                            <select  name="programme" class="form-control">
+                                            <?php
+                                                $sql = "SELECT * FROM programmes";
+                                                $stmnt = $conn->prepare($sql);
+                                                $stmnt->execute();
+                                                $result = $stmnt->get_result();
+                                                while ($row = $result->fetch_assoc()) {
+                                                    echo $row['programme_name'];
+                                                    echo "<option value='".$row['programme_name']."'> ".$row['programme_name']."</option>";
+                                                }
+                                            ?>
+                                            </select>
+                                            <small>Programme Name</small>
+                                            <!--<input type="" class="form-control" id="doc_desc" name="doc_desc">-->
+                                        </div>
+
+                                        <div class="form-group px-5 pt-2">
+                                            <label for="mqa">MQA Number *</label>
+                                            <input type="text" class="form-control" id="mqa" name="mqa" required autocomplete="off">
+
+                                            <!--<input type="" class="form-control" id="doc_desc" name="doc_desc">-->
+                                        </div>
+
+                                        <!-- <div class="form-group px-5 pt-2">
                                             <label for="programme">Programmme</label>
                                             <select  name="programme" class="form-control">
                                                 <option value="Proposal for new programme">Proposal for new programme</option>
@@ -90,22 +139,22 @@
                                                 <option value="Curriculum Review Document">Curriculum Review Document</option>
                                                 <option value="other">Other</option>
                                             </select>
-                                            <!--<input type="" class="form-control" id="doc_desc" name="doc_desc">-->
-                                        </div>
+                                            <input type="" class="form-control" id="doc_desc" name="doc_desc">
+                                        </div> -->
 
                                         <div class="form-group px-5 pt-2">
-                                            <label for="doc_name">Document Name *</label>
-                                            <input type="" class="form-control" id="doc_name" name="doc_name" required autocomplete="off">
+                                            <label for="doc_name">Title of Document *</label>
+                                            <input type="text" class="form-control" id="doc_name" name="doc_name" required autocomplete="off">
                                         </div>
 
-                                        <div class="form-group px-5 pt-2">
+                                        <!-- <div class="form-group px-5 pt-2">
                                             <label for="sender">Sender</label>
                                             <input type="" class="form-control" id="sender" name="sender">
 
-                                        </div>
+                                        </div> -->
 
                                         <div class="form-group px-5 pt-2">
-                                            <label for="owner">Owner *</label><br>
+                                            <label for="owner">Received from *</label><br>
                                             
                                             <!--<input type="" class="form-control" id="owner" name="owner" required>-->
                                             <?php 
@@ -122,18 +171,18 @@
 
                                                 while ($row = mysqli_fetch_array($result)) 
                                                 {
-
                                                     echo"<option value='".$row['name']."'> ".$row['name']."</option>";  
                                                 }
                                                 echo"</select>";
                                             
                                                 // mysqli_close($conn); // Closing Connection
                                             ?>
-                                            <small>Owner must create an account to be listed here</small>
+                                            <!-- <small>Owner must create an account to be listed here</small> -->
                                         </div>
 
+
                                         <div class="form-group px-5 pt-2">
-                                            <label for="responsibility">Assignee</label>
+                                            <label for="responsibility">Received by *</label>
 
                                             <?php
                                                 // SQL query to fetch information of registerd users and finds user match.
@@ -161,14 +210,46 @@
                                         </div>
 
                                         <div class="form-group px-5 pt-2">
-                                            <label for="receive_date">Receive on *</label>
+                                            <label for="receive_date">Date Receive *</label>
                                             <input type="datetime-local" step="1" class="form-control" id="receive_date" name="receive_date" required>
                                         </div>
 
                                         <div class="form-group px-5 pt-2">
+                                            <label for="owner">Assign to *</label><br>
+                                            
+                                            <!--<input type="" class="form-control" id="owner" name="owner" required>-->
+                                            <?php 
+                                                // include "C:\\xampp\htdocs\DTS2\includes\connect.php";
+
+                                                // SQL query to fetch information of registerd users and finds user match.
+                                                $query = "SELECT * FROM users WHERE role_name = 'owner'";
+                                                $result = mysqli_query($conn,$query);
+
+                                                //echo $conn->error;
+
+                                                echo"<select class='form-control' name='owner'>";
+                                                echo"<option value=''>";
+
+                                                while ($row = mysqli_fetch_array($result)) 
+                                                {
+                                                    echo"<option value='".$row['name']."'> ".$row['name']."</option>";  
+                                                }
+                                                echo"</select>";
+                                            
+                                                // mysqli_close($conn); // Closing Connection
+                                            ?>
+                                            <!-- <small>Owner must create an account to be listed here</small> -->
+                                        </div>
+
+                                        <div class="form-group px-5 pt-2">
+                                            <label for="receive_date">Date Assigned *</label>
+                                            <input type="datetime-local" step="1" class="form-control" id="date_assigned" name="date_assigned" required>
+                                        </div>
+
+                                        <!--  <div class="form-group px-5 pt-2">
                                             <label for="due_date">Due date</label>
                                             <input type="datetime-local" step="1"  class="form-control" id="due_date" name="due_date" required>
-                                        </div>
+                                        </div> -->
 
                                         <div class="form-group px-5 pt-2">
                                             <label for="doc_attention">Attention</label>
@@ -203,6 +284,11 @@
                                               <option>Return to sender</option>
                                               <option>Completed</option>
                                             </select>
+                                        </div>
+
+                                        <div class="form-group px-5 pt-2">
+                                            <label for="remarks">Remarks</label>
+                                            <textarea  class="form-control" name="remarks" rows="4" cols="50"></textarea>
                                         </div>
 
                                         <!--<div class="form-group px-5 pt-2">
@@ -287,20 +373,19 @@
         if (isset($_POST['doc_submit'])) {
             include "../../includes/connect.php";
 
-            // Get all data from form
             $doc_name = $_POST['doc_name'];
-            $sender = $_POST['sender'];
             $responsibility = $_POST['responsibility'];
             $kulliyah = $_POST['kuliyyah'];
             $doc_desc = $_POST['doc_desc'];
             $receive_date = $_POST['receive_date'];
-            $due_date = $_POST['due_date'];
             $doc_location = $_POST['doc_location'];
             $doc_attention = $_POST['doc_attention'];
             $doc_characteristic = $_POST['doc_characteristic'];
             $doc_status = "Pending";
             $doc_comment = $_POST['doc_comment'];
             $owner = $_POST['owner'];
+
+            
 
             //file handling
             /*$pdfname = $doc_name.".pdf";  
@@ -322,7 +407,7 @@
             // SQL query to fetch information of registerd users and finds user match.
             $query = "INSERT INTO documents 
             (doc_name,doc_sender,doc_responsibility, doc_kulliyah, doc_description, doc_receive, doc_due, doc_location, doc_attention, doc_characteristic, doc_status, doc_comment, owner)
-            VALUES ('$doc_name', '$sender', '$responsibility', '$kulliyah', '$doc_desc', '$receive_date', '$due_date', '$doc_location', '$doc_attention', '$doc_characteristic', '$doc_status', '$doc_comment', '$owner')";
+            VALUES ('$doc_name', 'sender_dummy', '$responsibility', '$kulliyah', '$doc_desc', '$receive_date', '2021-01-04 09:11:51', '$doc_location', '$doc_attention', '$doc_characteristic', '$doc_status', '$doc_comment', '$owner')";
             //$query = "UPDATE users SET role_name='$role' WHERE name='$user'";
             if ($conn->query($query) === TRUE) {
                 // echo "<script>alert('Document recorded successfully,')</script> ";
@@ -344,13 +429,13 @@
             //update to logs
             $query2 = "INSERT INTO logs 
             (doc_id,doc_name,doc_sender,doc_responsibility, doc_kulliyah, doc_description, doc_receive, doc_due, doc_location, doc_attention, doc_characteristic, doc_status, doc_comment, owner)
-            VALUES (LAST_INSERT_ID(),'$doc_name', '$sender', '$responsibility', '$kulliyah', '$doc_desc', '$receive_date', '$due_date', '$doc_location', '$doc_attention', '$doc_characteristic', '$doc_status', '$doc_comment', '$owner')";
+            VALUES (LAST_INSERT_ID(),'$doc_name', 'senderUdummy', '$responsibility', '$kulliyah', '$doc_desc', '$receive_date', '2021-01-04 09:11:51', '$doc_location', '$doc_attention', '$doc_characteristic', '$doc_status', '$doc_comment', '$owner')";
             //$query = "UPDATE users SET role_name='$role' WHERE name='$user'";
-            if ($conn->query($query2) === TRUE) {
-              echo "<script>alert('Updated to logs')</script> ";
-            } else {
-              echo "Error updating record: " . $conn->error;
-            }
+            // if ($conn->query($query2) === TRUE) {
+            //   echo "<script>alert('Updated to logs')</script> ";
+            // } else {
+            //   echo "Error updating record: " . $conn->error;
+            // }
             mysqli_close($conn); // Closing Connection
         }
     ?>
