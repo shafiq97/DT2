@@ -102,15 +102,35 @@
                     </div>
                     <!-- Content Row -->
                     <div class="row">
-                    <!-- Admin -->
-                    <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-warning shadow h-100 py-2">
+                        <!-- Submission to DCM -->
+                            <div class="col-xl-3 col-md-6 mb-4">
+                                <div class="card border-left-warning shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                            <a href="dcm.php">
+                                                <div class="text-l font-weight-bold text-warning text-uppercase mb-1"> Submission to DCM </div>
+                                            </a>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fas fa-user fa-2x text-gray-300"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        <!-- Submission to Senate -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-danger shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-l font-weight-bold text-warning text-uppercase mb-1">
-                                                Number of Pending Documents</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $row?></div>
+                                            <div class="text-l font-weight-bold text-danger text-uppercase mb-1">
+                                                Submission to Senate</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-user fa-2x text-gray-300"></i>
@@ -119,32 +139,16 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Director -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-danger shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-l font-weight-bold text-danger text-uppercase mb-1">
-                                                Number Completed Documents(s)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $completed?></div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-user fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> 
-                        <!-- Earnings (Monthly) Card Example -->
+
+                        <!-- Submission to MQA - MQA-01 (Self-Accreditation) -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-success shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-l font-weight-bold text-success text-uppercase mb-1">
-                                                Number of Approved Document(s)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $approved ?></div>
+                                                Submission to MQA - MQA-01 (Self-Accreditation)</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -153,18 +157,19 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Earnings (Monthly) Card Example -->
+
+                        <!-- Submission to MQA - MQA-02 (Self-Accreditation)-->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-info shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-l font-weight-bold text-info text-uppercase mb-1">
-                                            Total Document(s) <?php echo date("F:Y") ?>
+                                                Submission to MQA - MQA-02 (Self-Accreditation)
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?php echo $docMonths?></div>
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -175,14 +180,16 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Submission to BOG-->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-info shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-l font-weight-bold text-info text-uppercase mb-1">
-                                                Number of Rejected Document(s)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $rejected?></div>
+                                            Submission to BOG</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -191,7 +198,8 @@
                                 </div> 
                             </div>
                         </div>
-                        <!-- Users with no roles -->
+
+                        <!-- Submission to JPT -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-success shadow h-100 py-2" >
                                 <div class="card-body">
@@ -199,10 +207,10 @@
                                         <div class="col mr-2">
                                             <a href="view_docs.php">
                                                 <div class="text-l font-weight-bold text-success text-uppercase mb-1" >
-                                                    Total Documents
+                                                    Submission to JPT
                                                 </div>
                                                 <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                    <?php echo $total_doc ?>
+                                                   
                                                 </div>
                                             </a>
                                         </div>

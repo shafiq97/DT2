@@ -74,6 +74,7 @@
                 <button class="btn" type="submit" name="doc_cat_view" style="font-size: 15px;">Document Category</button>
                 <button class="btn" type="submit" name="centre_of_studies_view" style="font-size: 15px;">Kulliyyah/Centre/Institute</button>
                 <button class="btn" type="submit" name="programme_view" style="font-size: 15px;">Programme</button>
+                <button class="btn" type="submit" name="graduate_view" style="font-size: 15px;">Graduate</button>
             </div>
         </form>
     </div>

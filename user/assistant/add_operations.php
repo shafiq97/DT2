@@ -162,6 +162,50 @@
         }
     }
 
+    if (isset($_POST['add_graduate_submit'])) {
+        include '../../includes/connect.php';
+
+        // prepare and bind
+        $stmt = $conn->prepare("INSERT INTO graduate (graduate_name) VALUES (?)");
+
+        if($stmt === false){
+            ?>
+                <script>
+                    swal({
+                        title: "Error inserting programme",
+                        text: "Please contact admin",
+                        icon: "error"
+                    }).then(function() {
+                        window.location = "add_graduate.php";
+                    });
+                </script>
+            <?php
+        }
+        else{
+            $stmt->bind_param("s", $graduate_name);
+
+            // set parameter
+            $graduate_name = $_POST['graduate_name'];
+
+            // execute
+            $stmt->execute();
+            $stmt->close();
+            $conn->close();
+
+            ?>
+                <script>
+                    swal({
+                        title: "Record inserted",
+                        text: "",
+                        icon: "success"
+                    }).then(function() {
+                        window.location = "graduate_view.php";
+                    });
+                </script>
+            <?php
+        }
+    }
+
 ?>
 </html>
 
