@@ -1,5 +1,14 @@
 <?php 
     include "notification.php";
+    
+    //Get last doc id
+    $sql = "SELECT id FROM documents ORDER BY id DESC LIMIT 1";
+    $stmnt = $conn->prepare($sql);
+    $stmnt->execute();
+    $result = $stmnt->get_result();
+    $doc = $result->fetch_assoc();
+
+    // echo $doc['id'];
 ?>
 
 <!DOCTYPE html>
@@ -106,11 +115,18 @@
                                         </div>
                                         <!-- Type of meeting -->
                                         <div class="form-group px-5 pt-2">
-                                            <label for="doc_attention">Type of meeting</label>
-                                            <select class="form-control" id="doc_attention" name="doc_attention">
-                                              <option>Meeting 1</option>
-                                              <option>Meeting 2</option>
-                                              <option>Meeting 3</option>
+                                        <label for="meeting_type">Type of meeting</label>
+                                            <select  name="meeting_type" class="form-control" id="meeting_type">
+                                            <?php
+                                                $sql = "SELECT * FROM meeting";
+                                                $stmnt = $conn->prepare($sql);
+                                                $stmnt->execute();
+                                                $result = $stmnt->get_result();
+                                                echo "<option>Please Select</option>";
+                                                while ($row = $result->fetch_assoc()) {
+                                                    echo "<option value='".$row['meeting_id']."'> ".$row['meeting_name']."</option>";
+                                                }
+                                            ?>
                                             </select>
                                         </div>
                                         <!-- Meeting date -->
@@ -169,29 +185,17 @@
 
                                         <div class="form-group px-5 pt-2">
                                             <label for="owner">Received from *</label><br>
-                                            
-                                            <!--<input type="" class="form-control" id="owner" name="owner" required>-->
                                             <?php 
-                                                // include "C:\\xampp\htdocs\DTS2\includes\connect.php";
-
-                                                // SQL query to fetch information of registerd users and finds user match.
                                                 $query = "SELECT * FROM users WHERE role_name = 'owner'";
                                                 $result = mysqli_query($conn,$query);
-
-                                                //echo $conn->error;
-
                                                 echo"<select class='form-control' name='owner'>";
                                                 echo"<option value=''>";
-
                                                 while ($row = mysqli_fetch_array($result)) 
                                                 {
                                                     echo"<option value='".$row['name']."'> ".$row['name']."</option>";  
                                                 }
                                                 echo"</select>";
-                                            
-                                                // mysqli_close($conn); // Closing Connection
                                             ?>
-                                            <!-- <small>Owner must create an account to be listed here</small> -->
                                         </div>
 
 
@@ -272,6 +276,23 @@
                                               <option>Not Urgent</option>
                                               <option>Others</option>
                                             </select>
+                                        </div>
+
+                                        <div class="form-group px-5 pt-2">
+                                            <label for="programme">Programmes</label>
+                                            <select  name="programme" class="form-control">
+                                            <?php
+                                                $sql = "SELECT * FROM programmes";
+                                                $stmnt = $conn->prepare($sql);
+                                                $stmnt->execute();
+                                                $result = $stmnt->get_result();
+                                                while ($row = $result->fetch_assoc()) {
+                                                    echo $row['programme_name'];
+                                                    echo "<option value='".$row['programme_name']."'> ".$row['programme_name']."</option>";
+                                                }
+                                            ?>
+                                            </select>
+                                            <small>Programme Name</small>
                                         </div>
 
                                         <div class="form-group px-5 pt-2">
@@ -387,7 +408,7 @@
             $('#type').change(function(){
                 var cos = $('#cos').val() + "/";
                 var type = $('#type').val() + "/";
-                var running = uuidv4();
+                var running = <?php echo json_encode($doc['id']); ?>;
                 $("#reference:text").val(cos+type+running);
             })
 
@@ -403,7 +424,6 @@
 
         if (isset($_POST['doc_submit'])) {
             include "../../includes/connect.php";
-
             $doc_name = $_POST['doc_name'];
             $responsibility = $_POST['responsibility'];
             $kulliyah = $_POST['kuliyyah'];

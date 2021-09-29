@@ -26,5 +26,17 @@
   {
     header("Location: graduate_view.php");
   }
+  else if (isset($_POST['meeting_view']))
+  {
+    header("Location: meeting_view.php");
+  }
+  else if (isset($_POST['doc_characteristic_view']))
+  {
+    header("Location: doc_characteristic_view.php");
+  }
+  else if (isset($_POST['attention_view']))
+  {
+    header("Location: attention_view.php");
+  }
 
 ?>

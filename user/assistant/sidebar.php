@@ -67,15 +67,17 @@
         <i class="fas fa-fw fa-cog" style="color:white"></i>
         <span style="color:white">Configuration</span>
     </a>
-
     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
         <form action="configuration.php" method="post">
             <div class="bg-light py-2 collapse-inner rounded">
+                <button class="btn" type="submit" name="action_to_be_taken" style="font-size: 15px;">Action to be taken</button>
+                <button class="btn" type="submit" name="attention_view" style="font-size: 15px;">Attention</button>
                 <button class="btn" type="submit" name="doc_cat_view" style="font-size: 15px;">Document Category</button>
+                <button class="btn" type="submit" name="doc_characteristic_view" style="font-size: 15px;">Document Characteristic</button>
+                <button class="btn" type="submit" name="graduate_view" style="font-size:15px; display:block;">Graduate</button>
                 <button class="btn" type="submit" name="centre_of_studies_view" style="font-size: 15px;">Kulliyyah/Centre/Institute</button>
-                <button class="btn" type="submit" name="programme_view" style="font-size: 15px;">Programme</button>
-                <button class="btn" type="submit" name="graduate_view" style="font-size: 15px;">Graduate</button>
-            </div>
+                <button class="btn" type="submit" name="meeting_view" style="font-size: 15px;">Meeting</button>
+                <button class="btn" type="submit" name="programme_view" style="font-size: 15px; display:block">Programme</button>
         </form>
     </div>
 </li>

@@ -206,6 +206,50 @@
         }
     }
 
+    if (isset($_POST['add_meeting_submit'])) {
+        include '../../includes/connect.php';
+
+        // prepare and bind
+        $stmt = $conn->prepare("INSERT INTO meeting (meeting_name) VALUES (?)");
+
+        if($stmt === false){
+            ?>
+                <script>
+                    swal({
+                        title: "Error inserting meeting",
+                        text: "Please contact admin",
+                        icon: "error"
+                    }).then(function() {
+                        window.location = "add_meeting.php";
+                    });
+                </script>
+            <?php
+        }
+        else{
+            $stmt->bind_param("s", $meeting_name);
+
+            // set parameter
+            $meeting_name = $_POST['meeting_name'];
+
+            // execute
+            $stmt->execute();
+            $stmt->close();
+            $conn->close();
+
+            ?>
+                <script>
+                    swal({
+                        title: "Record inserted",
+                        text: "",
+                        icon: "success"
+                    }).then(function() {
+                        window.location = "meeting_view.php";
+                    });
+                </script>
+            <?php
+        }
+    }
+
 ?>
 </html>
 
