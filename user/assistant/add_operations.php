@@ -166,13 +166,14 @@
         include '../../includes/connect.php';
 
         // prepare and bind
-        $stmt = $conn->prepare("INSERT INTO graduate (graduate_name) VALUES (?)");
+        $stmt = $conn->prepare("INSERT INTO graduate (graduate_level_type, graduate_level_code) VALUES (?,?)");
 
         if($stmt === false){
+            
             ?>
                 <script>
                     swal({
-                        title: "Error inserting programme",
+                        title: "Error inserting graduate type",
                         text: "Please contact admin",
                         icon: "error"
                     }).then(function() {
@@ -182,10 +183,12 @@
             <?php
         }
         else{
-            $stmt->bind_param("s", $graduate_name);
+
+            $stmt->bind_param("ss", $graduate_level_type, $graduate_level_code);
 
             // set parameter
-            $graduate_name = $_POST['graduate_name'];
+            $graduate_level_type = $_POST['graduate_level_type'];
+            $graduate_level_code = sprintf('%03d', $_POST['graduate_level_code']);
 
             // execute
             $stmt->execute();
@@ -244,6 +247,137 @@
                         icon: "success"
                     }).then(function() {
                         window.location = "meeting_view.php";
+                    });
+                </script>
+            <?php
+        }
+    }
+
+    if (isset($_POST['add_attention_submit'])) {
+        include '../../includes/connect.php';
+
+        // prepare and bind
+        $stmt = $conn->prepare("INSERT INTO attention (attention_name) VALUES (?)");
+
+        if($stmt === false){
+            ?>
+                <script>
+                    swal({
+                        title: "Error inserting attention",
+                        text: "Please contact admin",
+                        icon: "error"
+                    }).then(function() {
+                        window.location = "add_attention.php";
+                    });
+                </script>
+            <?php
+        }
+        else{
+            $stmt->bind_param("s", $attention_name);
+
+            // set parameter
+            $attention_name = $_POST['attention_name'];
+
+            // execute
+            $stmt->execute();
+            $stmt->close();
+            $conn->close();
+            ?>
+                <script>
+                    swal({
+                        title: "Record inserted",
+                        text: "",
+                        icon: "success"
+                    }).then(function() {
+                        window.location = "attention_view.php";
+                    });
+                </script>
+            <?php
+        }
+    }
+
+    if (isset($_POST['add_doc_characteristic_submit'])) {
+        include '../../includes/connect.php';
+
+        // prepare and bind
+        $stmt = $conn->prepare("INSERT INTO doc_characteristic (doc_characteristic_name) VALUES (?)");
+
+        if($stmt === false){
+            ?>
+                <script>
+                    swal({
+                        title: "Error inserting document characteristic",
+                        text: "Please contact admin",
+                        icon: "error"
+                    }).then(function() {
+                        window.location = "add_doc_characteristic.php";
+                    });
+                </script>
+            <?php
+        }
+        else{
+            $stmt->bind_param("s", $doc_characteristic_name);
+
+            // set parameter
+            $doc_characteristic_name = $_POST['doc_characteristic_name'];
+
+            // execute
+            $stmt->execute();
+            echo $conn->error;
+            $stmt->close();
+            $conn->close();
+            ?>
+                <script>
+                    swal({
+                        title: "Record inserted",
+                        text: "",
+                        icon: "success"
+                    }).then(function() {
+                        window.location = "doc_characteristic_view.php";
+                    });
+                </script>
+            <?php
+        }
+    }
+
+    if (isset($_POST['add_action_submit'])) {
+        include '../../includes/connect.php';
+
+        // prepare and bind
+        $stmt = $conn->prepare("INSERT INTO action_to_be_taken (action_name) VALUES (?)");
+
+        if($stmt === false){
+            ?>
+                <script>
+                    swal({
+                        title: "Error inserting action",
+                        text: "Please contact admin",
+                        icon: "error"
+                    }).then(function() {
+                        window.location = "add_action.php";
+                    });
+                </script>
+            <?php
+        }
+        else{
+            $stmt->bind_param("s", $action_name);
+
+            // set parameter
+            $action_name = $_POST['action_name'];
+
+            // execute
+            $stmt->execute();
+            echo $conn->error;
+            $stmt->close();
+            $conn->close();
+            ?>
+                <script>
+                    swal({
+                        title: "Record inserted",
+                        text: "",
+                        icon: "success"
+                    }).then(function() {
+                        window.location = "action_to_be_taken_view.php";
                     });
                 </script>
             <?php

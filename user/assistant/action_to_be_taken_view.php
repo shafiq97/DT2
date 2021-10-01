@@ -52,12 +52,12 @@
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 blue">
                             <div>
-                                <h6 class="m-0 font-weight-bold text-white float-left">Graduate</h6>
+                                <h6 class="m-0 font-weight-bold text-white float-left">Action to be Taken</h6>
                             </div> 
                         </div>
 
                         <div class="d-flex justify-content-left">
-                            <a href="add_graduate.php" class="btn btn-primary" style="width: 20%; margin-left: 20px;">Add Graduate</a>
+                            <a href="add_action.php" class="btn btn-primary" style="width: 20%; margin-left: 20px;">Add Action to be Taken</a>
                         </div>
 
                         <div class="card-body">
@@ -66,9 +66,8 @@
                                     <thead>
                                         <tr>
                                             <!-- <th>Doc ID</th> -->
-                                            <th>Graduate Level ID</th>
-                                            <th>Graduate Level</th>
-                                            <th>Graduate Level Code</th>
+                                            <th>Action ID</th>
+                                            <th>Action Name</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
                                         </tr>
@@ -76,9 +75,8 @@
                                     <tfoot>
                                         <tr>
                                             <!-- <th>Doc ID</th> -->
-                                            <th>Graduate Level ID</th>
-                                            <th>Graduate Level</th>
-                                            <th>Graduate Level Code</th>
+                                            <th>Action ID</th>
+                                            <th>Action Name</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
                                         </tr>
@@ -88,7 +86,7 @@
                                         <?php 
                                             include '../../includes/connect.php';
 
-                                            $sql = "SELECT * FROM graduate ORDER BY graduate_level_type";
+                                            $sql = "SELECT * FROM action_to_be_taken ORDER BY action_name";
 
                                             $result = mysqli_query($conn,$sql);
                                             
@@ -96,21 +94,20 @@
  
                                                 echo "<tr>";
                                                 echo "<form method='post' id='myFormID'>";
-                                                echo "<input type='hidden' name='graduate_level_id' value=".$row['graduate_level_id']."> ";
-                                                echo "<td>" . $row['graduate_level_id'] . "</td>";
-                                                echo "<td name='graduate_level_type'>" . $row['graduate_level_type'] . "</td>";
-                                                echo "<td name='graduate_level_type'>" . $row['graduate_level_code'] . "</td>";
+                                                echo "<input type='hidden' name='action_id' value=".$row['action_id']."> ";
+                                                echo "<td>" . $row['action_id'] . "</td>";
+                                                echo "<td name='action_name'>" . $row['action_name'] . "</td>";
 
-                                                echo "<td><button class='btn btn-success' data-toggle='modal' data-target='#doc-".$row['graduate_level_id']."' type='button' name='save_button' value='".$row['graduate_level_id']."'>Edit</button>
+                                                echo "<td><button class='btn btn-success' data-toggle='modal' data-target='#doc-".$row['action_id']."' type='button' name='save_button' value='".$row['action_id']."'>Edit</button>
                                                         </td>";
 
-                                                echo "<td><button class='btn btn-danger' data-toggle='modal' data-target='#doc_dlt-".$row['graduate_level_id']."' type='button' name='delete_btn'  value='".$row['graduate_level_id']."'>Delete</button>
+                                                echo "<td><button class='btn btn-danger' data-toggle='modal' data-target='#doc_dlt-".$row['action_id']."' type='button' name='delete_btn'  value='".$row['action_id']."'>Delete</button>
                                                         </td>";
 
                                                 echo "</form>";
                                                 echo "</tr>";
                                                 
-                                                echo"<div id='doc-".$row['graduate_level_id']."' class='modal fade' role='dialog'>
+                                                echo"<div id='doc-".$row['action_id']."' class='modal fade' role='dialog'>
                                                         <div class='modal-dialog'>
                                                             <!-- Modal content-->
                                                             <div class='modal-content'>
@@ -122,16 +119,12 @@
                                                                 <div class='modal-body'>
                                                                     <form class='form-group' method='post'>
                                                                         <div class='px-5 pb-3'>
-                                                                            <Label>Graduate Level ID</label>
-                                                                            <input readonly class='form-control' name='id' id='doc-".$row['graduate_level_id']."' value='".$row['graduate_level_id']."'>
+                                                                            <Label>Action ID</label>
+                                                                            <input readonly class='form-control' name='id' id='doc-".$row['action_id']."' value='".$row['action_id']."'>
                                                                         </div>
                                                                         <div class='px-5 pb-3'>
-                                                                            <Label>Graduate Level Type</label>
-                                                                            <input class='form-control' id='".$row['graduate_level_type']."' value='".$row['graduate_level_type']."' name='graduate_level_type' required>
-                                                                        </div>
-                                                                        <div class='px-5 pb-3'>
-                                                                            <Label>Graduate Level code</label>
-                                                                            <input class='form-control' id='".$row['graduate_level_code']."' value='".$row['graduate_level_code']."' name='graduate_level_code' required>
+                                                                            <Label>Action Name Type</label>
+                                                                            <input class='form-control' id='".$row['action_name']."' value='".$row['action_name']."' name='action_name' required>
                                                                         </div>
                                                                         <div class='modal-footer'>
                                                                             <button type='submit' class='btn btn-default' name='update_btn'>Update</button>
@@ -143,14 +136,14 @@
                                                         </div>
                                                     </div>";
 
-                                                    echo"<div id='doc_dlt-".$row['graduate_level_id']."' class='modal fade' role='dialog'>
+                                                    echo"<div id='doc_dlt-".$row['action_id']."' class='modal fade' role='dialog'>
                                                         <div class='modal-dialog'>
                                                             <!-- Modal content-->
                                                             <div class='modal-content'>
                                                                 <div class='modal-body'>
                                                                     <form class='form-group' method='post'>
-                                                                        <input type='hidden' value='".$row['graduate_level_id']."' name='id' >
-                                                                        <p> ".$row['graduate_level_type']." </p>
+                                                                        <input type='hidden' value='".$row['action_id']."' name='id' >
+                                                                        <p> ".$row['action_name']." </p>
                                                                         <div class='modal-footer'>
                                                                             <button type='submit' class='btn btn-danger' name='delete_btn'>Delete</button>
                                                                             <button type='button' class='btn btn-default' data-dismiss='modal'>Cancel</button>
@@ -373,12 +366,11 @@
     //session_start(); // Starting Session
     $error = ''; // Variable To Store Error Message
     if (isset($_POST['update_btn'])) {
-        $sql = "UPDATE graduate SET graduate_level_type=?, graduate_level_code=? WHERE graduate_level_id=?";
+        $sql = "UPDATE action_to_be_taken SET action_name=? WHERE action_id=?";
         $stmnt = $conn->prepare($sql);
-        $stmnt->bind_param('ssi',$graduate_level_type, $graduate_level_code, $id);
+        $stmnt->bind_param('si',$action_name,$id);
         $id = $_POST['id'];
-        $graduate_level_type = $_POST['graduate_level_type'];
-        $graduate_level_code = sprintf('%03d', $_POST['graduate_level_code']);
+        $action_name = $_POST['action_name'];
         $status = $stmnt->execute();
         if($status === false){
             if (mysqli_errno($conn) == 1062) {
@@ -388,7 +380,7 @@
                         title: "Duplicate entry found",
                         icon: "error"
                     }).then(function() {
-                        window.location = "graduate_view.php";
+                        window.location = "action_to_taken_view.php";
                     });
                 </script>
             <?php
@@ -402,7 +394,7 @@
                         title: "Record updated successfully",
                         icon: "success"
                     }).then(function() {
-                        window.location = "graduate_view.php";
+                        window.location = "action_to_be_taken_view.php";
                     });
                 </script>
             <?php
@@ -410,7 +402,7 @@
         mysqli_close($conn); // Closing Connection 
     }
     else if (isset($_POST['delete_btn'])) {
-        $sql = "DELETE FROM graduate WHERE graduate_level_id=?";
+        $sql = "DELETE FROM graduate WHERE action_id=?";
         $stmnt = $conn->prepare($sql);
         $stmnt->bind_param('i', $id);
         $id = $_POST['id'];

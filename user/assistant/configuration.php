@@ -38,5 +38,9 @@
   {
     header("Location: attention_view.php");
   }
+  else if (isset($_POST['action_to_be_taken_view']))
+  {
+    header("Location: action_to_be_taken_view.php");
+  }
 
 ?>

@@ -39,20 +39,16 @@
                                     <!-- Card Header - Accordion -->
                                     <a href="#collapseCardExample" class="d-block card-header py-3 blue" data-toggle="collapse"
                                         role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                                        <h6 class="font-weight-bold text-white px-4">Add Graduate:<span> * Required Fill </span></h6>
+                                        <h6 class="font-weight-bold text-white px-4">Add Attention:<span> * Required Fill </span></h6>
                                     </a>
                                     <!-- Card Content - Collapse -->
                                     <div class="collapse show" id="collapseCardExample">
                                         <div class="form-group px-5 pt-2">
-                                            <label for="graduate_name">Graduate Level *</label>
-                                            <input type="text" class="form-control" id="graduate_level_type" name="graduate_level_type" required autocomplete="off">
+                                            <label for="attention_name">Attention Name *</label>
+                                            <input type="text" class="form-control" id="attention_name" name="attention_name" required autocomplete="off">
                                         </div>
                                         <div class="form-group px-5 pt-2">
-                                            <label for="graduate_name">Graduate Level Code *</label>
-                                            <input type="number" class="form-control" id="graduate_level_code" name="graduate_level_code" max="999" required autocomplete="off">
-                                        </div>
-                                        <div class="form-group px-5 pt-2">
-                                            <button type="submit" class="btn uia" style="color:white" value="Add" name="add_graduate_submit">Add</button>
+                                            <button type="submit" class="btn uia" style="color:white" value="Add" name="add_attention_submit">Add</button>
                                         </div>
                                     </div>     
                                 </div>

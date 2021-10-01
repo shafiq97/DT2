@@ -48,7 +48,7 @@
                                             <input type="text" class="form-control" id="doc_characteristic_name" name="doc_characteristic_name" required autocomplete="off">
                                         </div>
                                         <div class="form-group px-5 pt-2">
-                                            <button type="submit" class="btn uia" style="color:white" value="Add" name="add_meeting_submit">Add</button>
+                                            <button type="submit" class="btn uia" style="color:white" value="Add" name="add_doc_characteristic_submit">Add</button>
                                         </div>
                                     </div>     
                                 </div>

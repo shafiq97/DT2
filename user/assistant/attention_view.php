@@ -52,12 +52,12 @@
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 blue">
                             <div>
-                                <h6 class="m-0 font-weight-bold text-white float-left">Document Characteristic</h6>
+                                <h6 class="m-0 font-weight-bold text-white float-left">Attention</h6>
                             </div> 
                         </div>
 
                         <div class="d-flex justify-content-left">
-                            <a href="add_doc_characteristic.php" class="btn btn-primary" style="width: 20%; margin-left: 20px;">Add Document Characteristic</a>
+                            <a href="add_attention.php" class="btn btn-primary" style="width: 20%; margin-left: 20px;">Add Attention</a>
                         </div>
 
                         <div class="card-body">
@@ -66,8 +66,8 @@
                                     <thead>
                                         <tr>
                                             <!-- <th>Doc ID</th> -->
-                                            <th>Document Characteristic ID</th>
-                                            <th>Document Characteristic</th>
+                                            <th>Attention ID</th>
+                                            <th>Attention</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
                                         </tr>
@@ -75,8 +75,8 @@
                                     <tfoot>
                                         <tr>
                                             <!-- <th>Doc ID</th> -->
-                                            <th>Document Characteristic ID</th>
-                                            <th>Document Characteristic</th>
+                                            <th>Attention ID</th>
+                                            <th>Attention</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
                                         </tr>
@@ -86,7 +86,7 @@
                                         <?php 
                                             include '../../includes/connect.php';
 
-                                            $sql = "SELECT * FROM doc_characteristic ORDER BY doc_characteristic_name";
+                                            $sql = "SELECT * FROM attention ORDER BY attention_name";
 
                                             $result = mysqli_query($conn,$sql);
                                             
@@ -94,38 +94,38 @@
  
                                                 echo "<tr>";
                                                 echo "<form method='post' id='myFormID'>";
-                                                echo "<input type='hidden' name='doc_characteristic_id' value=".$row['doc_characteristic_id']."> ";
-                                                echo "<td>" . $row['doc_characteristic_id'] . "</td>";
-                                                echo "<td name='doc_characteristic_name'>" . $row['doc_characteristic_name'] . "</td>";
+                                                echo "<input type='hidden' name='attention_id' value=".$row['attention_id']."> ";
+                                                echo "<td>" . $row['attention_id'] . "</td>";
+                                                echo "<td name='attention_name'>" . $row['attention_name'] . "</td>";
 
-                                                echo "<td><button class='btn btn-success' data-toggle='modal' data-target='#doc-".$row['doc_characteristic_id']."' type='button' name='save_button' value='".$row['doc_characteristic_id']."'>Edit</button>
+                                                echo "<td><button class='btn btn-success' data-toggle='modal' data-target='#doc-".$row['attention_id']."' type='button' name='save_button' value='".$row['attention_id']."'>Edit</button>
                                                         </td>";
 
-                                                echo "<td><button class='btn btn-danger' data-toggle='modal' data-target='#doc_dlt-".$row['doc_characteristic_id']."' type='button' name='delete_btn'  value='".$row['doc_characteristic_id']."'>Delete</button>
+                                                echo "<td><button class='btn btn-danger' data-toggle='modal' data-target='#doc_dlt-".$row['attention_id']."' type='button' name='delete_btn'  value='".$row['attention_id']."'>Delete</button>
                                                         </td>";
 
                                                 echo "</form>";
                                                 echo "</tr>";
                                                 
-                                                echo"<div id='doc-".$row['doc_characteristic_id']."' class='modal fade' role='dialog'>
+                                                echo"<div id='doc-".$row['attention_id']."' class='modal fade' role='dialog'>
                                                         <div class='modal-dialog'>
                                                             <!-- Modal content-->
                                                             <div class='modal-content'>
 
                                                                 <div class='modal-header'>    
-                                                                    <h4 class='modal-title'>Update Document Characteristic</h4>
+                                                                    <h4 class='modal-title'>Update Attention</h4>
                                                                     <button type='button' class='close' data-dismiss='modal'>&times;</button>
                                                                 </div>
 
                                                                 <div class='modal-body'>
                                                                     <form class='form-group' method='post'>
                                                                         <div class='px-5 pb-3'>
-                                                                            <Label>Document Characteristic ID</label>
-                                                                            <input readonly class='form-control' name='id' id='doc-".$row['doc_characteristic_id']."' value='".$row['doc_characteristic_id']."'>
+                                                                            <Label>Attention ID</label>
+                                                                            <input readonly class='form-control' name='id' id='doc-".$row['attention_id']."' value='".$row['attention_id']."'>
                                                                         </div>
                                                                         <div class='px-5 pb-3'>
-                                                                            <Label>Document Characteristic</label>
-                                                                            <input class='form-control' id='".$row['doc_characteristic_name']."' value='".$row['doc_characteristic_name']."' name='doc_characteristic_name' required>
+                                                                            <Label>Attention</label>
+                                                                            <input class='form-control' id='".$row['attention_name']."' value='".$row['attention_name']."' name='attention_name' required>
                                                                         </div>
                                                                         <div class='modal-footer'>
                                                                             <button type='submit' class='btn btn-default' name='update_btn'>Update</button>
@@ -137,14 +137,14 @@
                                                         </div>
                                                     </div>";
 
-                                                    echo"<div id='doc_dlt-".$row['doc_characteristic_id']."' class='modal fade' role='dialog'>
+                                                    echo"<div id='doc_dlt-".$row['attention_id']."' class='modal fade' role='dialog'>
                                                         <div class='modal-dialog'>
                                                             <!-- Modal content-->
                                                             <div class='modal-content'>
                                                                 <div class='modal-body'>
                                                                     <form class='form-group' method='post'>
-                                                                        <input type='hidden' value='".$row['doc_characteristic_id']."' name='id' >
-                                                                        <p> ".$row['doc_characteristic_name']." </p>
+                                                                        <input type='hidden' value='".$row['attention_id']."' name='id' >
+                                                                        <p> ".$row['attention_name']." </p>
                                                                         <div class='modal-footer'>
                                                                             <button type='submit' class='btn btn-danger' name='delete_btn'>Delete</button>
                                                                             <button type='button' class='btn btn-default' data-dismiss='modal'>Cancel</button>
@@ -367,11 +367,11 @@
     //session_start(); // Starting Session
     $error = ''; // Variable To Store Error Message
     if (isset($_POST['update_btn'])) {
-        $sql = "UPDATE doc_characteristic SET doc_characteristic_name=? WHERE doc_characteristic_id=?";
+        $sql = "UPDATE attention SET attention_name=? WHERE attention_id=?";
         $stmnt = $conn->prepare($sql);
-        $stmnt->bind_param('si',$doc_characteristic_name, $id);
+        $stmnt->bind_param('si',$attention_name, $id);
         $id = $_POST['id'];
-        $doc_characteristic_name = $_POST['doc_characteristic_name'];
+        $attention_name = $_POST['attention_name'];
         $status = $stmnt->execute();
         if($status === false){
             echo "Something is wrong";
@@ -383,7 +383,7 @@
                         title: "Record updated successfully",
                         icon: "success"
                     }).then(function() {
-                        window.location = "doc_characteristic_view.php";
+                        window.location = "attention_view.php";
                     });
                 </script>
             <?php
@@ -391,7 +391,7 @@
         mysqli_close($conn); // Closing Connection 
     }
     else if (isset($_POST['delete_btn'])) {
-        $sql = "DELETE FROM doc_characteristic WHERE doc_characteristic_id=?";
+        $sql = "DELETE FROM attention WHERE attention_id=?";
         $stmnt = $conn->prepare($sql);
         $stmnt->bind_param('i', $id);
         $id = $_POST['id'];
@@ -406,7 +406,7 @@
                         title: "Record cannot be deleted, contact admin",
                         icon: "error"
                     }).then(function() {
-                        window.location = "doc_characteristic_view.php";
+                        window.location = "attention_view.php";
                     });
                 </script>
             <?php
@@ -418,7 +418,7 @@
                         title: "Record deleted successfully",
                         icon: "success"
                     }).then(function() {
-                        window.location = "doc_characteristic_view.php";
+                        window.location = "attention_view.php";
                     });
                 </script>
             <?php

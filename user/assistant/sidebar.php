@@ -70,7 +70,7 @@
     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
         <form action="configuration.php" method="post">
             <div class="bg-light py-2 collapse-inner rounded">
-                <button class="btn" type="submit" name="action_to_be_taken" style="font-size: 15px;">Action to be taken</button>
+                <button class="btn" type="submit" name="action_to_be_taken_view" style="font-size: 15px;">Action to be taken</button>
                 <button class="btn" type="submit" name="attention_view" style="font-size: 15px;">Attention</button>
                 <button class="btn" type="submit" name="doc_cat_view" style="font-size: 15px;">Document Category</button>
                 <button class="btn" type="submit" name="doc_characteristic_view" style="font-size: 15px;">Document Characteristic</button>
