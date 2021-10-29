@@ -127,6 +127,10 @@
                                                                             <Label>Centre of Studies</label>
                                                                             <input class='form-control' id='".$row['cos_name']."' value='".$row['cos_name']."' name='cos_name' required>
                                                                         </div>
+                                                                        <div class='px-5 pb-3'>
+                                                                            <Label>Reference Code</label>
+                                                                            <input class='form-control' id='".$row['cos_name']."' value='".$row['cos_name']."' name='cos_name' required>
+                                                                        </div>
                                                                         <div class='modal-footer'>
                                                                             <button type='submit' class='btn btn-default' name='update_btn'>Update</button>
                                                                             <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>

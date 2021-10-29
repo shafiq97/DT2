@@ -1,4 +1,13 @@
-<!-- Sidebar -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Sidebar -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion uia" id="accordionSidebar">
 
 <!-- Sidebar - Brand -->
@@ -23,7 +32,7 @@
 </div>
 <!-- Nav Item - Charts -->
 <li class="nav-item">
-    <a class="nav-link" href="indexmain.php">
+    <a class="nav-link" href="#">
         <i class="fas fa-fw fa-chart-area" style="color:white"></i>
         <span style="color:white">Add Document</span><br>
     </a>
@@ -68,16 +77,17 @@
         <span style="color:white">Configuration</span>
     </a>
     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
-        <form action="configuration.php" method="post">
+        <form action="configuration.php" method="post" target="_blank">
             <div class="bg-light py-2 collapse-inner rounded">
                 <button class="btn" type="submit" name="action_to_be_taken_view" style="font-size: 15px;">Action to be taken</button>
                 <button class="btn" type="submit" name="attention_view" style="font-size: 15px;">Attention</button>
                 <button class="btn" type="submit" name="doc_cat_view" style="font-size: 15px;">Document Category</button>
                 <button class="btn" type="submit" name="doc_characteristic_view" style="font-size: 15px;">Document Characteristic</button>
-                <button class="btn" type="submit" name="graduate_view" style="font-size:15px; display:block;">Graduate</button>
+                <button class="btn" type="submit" name="graduate_view" style="font-size:15px; display:block;">Level of studies</button>
                 <button class="btn" type="submit" name="centre_of_studies_view" style="font-size: 15px;">Kulliyyah/Centre/Institute</button>
                 <button class="btn" type="submit" name="meeting_view" style="font-size: 15px;">Meeting</button>
                 <button class="btn" type="submit" name="programme_view" style="font-size: 15px; display:block">Programme</button>
+                <button class="btn" type="submit" name="status_view" style="font-size: 15px; display:block">Status</button>
         </form>
     </div>
 </li>
@@ -98,3 +108,6 @@
 
 </ul>
 <!-- End of Sidebar -->
+</body>
+</html>
+

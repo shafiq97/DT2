@@ -42,5 +42,10 @@
   {
     header("Location: action_to_be_taken_view.php");
   }
+  else if (isset($_POST['status_view']))
+  {
+    header("Location: status_view.php");
+  }
+
 
 ?>

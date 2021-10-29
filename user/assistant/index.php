@@ -3,47 +3,47 @@
 
     $name = $_SESSION['name'];
 
-    $query = "SELECT doc_status FROM documents where (doc_responsibility='$name') AND (doc_status='Pending')";
-    $result = mysqli_query($conn,$query);
-    $row = mysqli_num_rows($result);
+    // $query = "SELECT doc_status FROM documents where (doc_responsibility='$name') AND (doc_status='Pending')";
+    // $result = mysqli_query($conn,$query);
+    // $row = mysqli_num_rows($result);
 
-    $query3 = "SELECT doc_status FROM documents where (doc_responsibility='$name') AND (doc_status='Completed')";
-    $result3 = mysqli_query($conn,$query3);
-    $completed = mysqli_num_rows($result3);
+    // $query3 = "SELECT doc_status FROM documents where (doc_responsibility='$name') AND (doc_status='Completed')";
+    // $result3 = mysqli_query($conn,$query3);
+    // $completed = mysqli_num_rows($result3);
 
-    $query4 = "SELECT doc_status FROM documents where (doc_responsibility='$name') AND (doc_status='Approved')";
-    $result4 = mysqli_query($conn,$query4);
-    $approved = mysqli_num_rows($result4);
+    // $query4 = "SELECT doc_status FROM documents where (doc_responsibility='$name') AND (doc_status='Approved')";
+    // $result4 = mysqli_query($conn,$query4);
+    // $approved = mysqli_num_rows($result4);
 
-    $month = date('m');
-    $query5 = "SELECT doc_status FROM documents where (doc_responsibility='$name') AND (MONTH(doc_receive) ='$month')";
-    $result5 = mysqli_query($conn,$query5);
-    $docMonths = mysqli_num_rows($result5);
+    // $month = date('m');
+    // $query5 = "SELECT doc_status FROM documents where (doc_responsibility='$name') AND (MONTH(doc_receive) ='$month')";
+    // $result5 = mysqli_query($conn,$query5);
+    // $docMonths = mysqli_num_rows($result5);
 
-    $query7 = "SELECT doc_status FROM documents where (doc_responsibility='$name') AND (doc_status='Rejected')";
-    $result7 = mysqli_query($conn,$query7);
-    $rejected = mysqli_num_rows($result7);
+    // $query7 = "SELECT doc_status FROM documents where (doc_responsibility='$name') AND (doc_status='Rejected')";
+    // $result7 = mysqli_query($conn,$query7);
+    // $rejected = mysqli_num_rows($result7);
 
-    $query8 = "SELECT doc_status FROM documents where (doc_responsibility='$name')";
-    $result8 = mysqli_query($conn,$query8);
-    $total_doc = mysqli_num_rows($result8);
+    // $query8 = "SELECT doc_status FROM documents where (doc_responsibility='$name')";
+    // $result8 = mysqli_query($conn,$query8);
+    // $total_doc = mysqli_num_rows($result8);
 
-    $query9 = "SELECT doc_status FROM documents where (doc_comment='Reviewed') AND (doc_responsibility='$name')";
-    $result9 = mysqli_query($conn,$query9);
-    $review = mysqli_num_rows($result9);
+    // $query9 = "SELECT doc_status FROM documents where (doc_comment='Reviewed') AND (doc_responsibility='$name')";
+    // $result9 = mysqli_query($conn,$query9);
+    // $review = mysqli_num_rows($result9);
 
-    $today_date = date("Y-m-d");
+    // $today_date = date("Y-m-d");
 
-    $query2 = "SELECT `date`,`message` FROM announcement";
-    $result2 = mysqli_query($conn,$query2);
-    $count = 0;
+    // $query2 = "SELECT `date`,`message` FROM announcement";
+    // $result2 = mysqli_query($conn,$query2);
+    // $count = 0;
     
-    while ($row2 = mysqli_fetch_array($result2)) {
-        $announcement_date = date("Y-m-d",strtotime($row2['date']));
-        if($today_date === $announcement_date){
-            $count++;
-        }
-    }
+    // while ($row2 = mysqli_fetch_array($result2)) {
+    //     $announcement_date = date("Y-m-d",strtotime($row2['date']));
+    //     if($today_date === $announcement_date){
+    //         $count++;
+    //     }
+    // }
 ?>
 
 <!DOCTYPE html>
@@ -102,25 +102,25 @@
                     </div>
                     <!-- Content Row -->
                     <div class="row">
+
                         <!-- Submission to DCM -->
-                            <div class="col-xl-3 col-md-6 mb-4">
-                                <div class="card border-left-warning shadow h-100 py-2">
-                                    <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                            <a href="dcm.php">
-                                                <div class="text-l font-weight-bold text-warning text-uppercase mb-1"> Submission to DCM </div>
-                                            </a>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
-                                            </div>
-                                            <div class="col-auto">
-                                                <i class="fas fa-user fa-2x text-gray-300"></i>
-                                            </div>
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                        <a href="dcm.php">
+                                            <div class="text-l font-weight-bold text-warning text-uppercase mb-1"> Submission to DCM </div>
+                                        </a>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-user fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
+                        </div>
 
                         <!-- Submission to Senate -->
                         <div class="col-xl-3 col-md-6 mb-4">
@@ -128,8 +128,9 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-l font-weight-bold text-danger text-uppercase mb-1">
-                                                Submission to Senate</div>
+                                        <a href="senate.php">
+                                            <div class="text-l font-weight-bold text-danger text-uppercase mb-1"> Submission to Senate</div>
+                                        </a>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
                                         </div>
                                         <div class="col-auto">

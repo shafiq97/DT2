@@ -22,7 +22,7 @@
 
     <!-- Custom styles for this template -->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css"> -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css">
     
     <!-- Custom styles for this page -->
@@ -57,7 +57,7 @@
                         </div>
 
                         <div class="d-flex justify-content-left">
-                            <a href="add_graduate.php" class="btn btn-primary" style="width: 20%; margin-left: 20px;">Add Graduate</a>
+                            <a href="add_graduate.php" class="btn btn-primary" style="width: 20%; margin-left: 20px;">Add Level of Studies</a>
                         </div>
 
                         <div class="card-body">
@@ -65,20 +65,18 @@
                                 <table class="table table-bordered hover" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <!-- <th>Doc ID</th> -->
-                                            <th>Graduate Level ID</th>
-                                            <th>Graduate Level</th>
-                                            <th>Graduate Level Code</th>
+                                            <th>Level of Studies</th>
+                                            <th>MQF Level</th>
+                                            <th>Level of Studies Ref Code</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <!-- <th>Doc ID</th> -->
-                                            <th>Graduate Level ID</th>
-                                            <th>Graduate Level</th>
-                                            <th>Graduate Level Code</th>
+                                            <th>Level of Studies</th>
+                                            <th>MQF Level</th>
+                                            <th>Level of Studies Ref Code</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
                                         </tr>
@@ -97,8 +95,8 @@
                                                 echo "<tr>";
                                                 echo "<form method='post' id='myFormID'>";
                                                 echo "<input type='hidden' name='graduate_level_id' value=".$row['graduate_level_id']."> ";
-                                                echo "<td>" . $row['graduate_level_id'] . "</td>";
                                                 echo "<td name='graduate_level_type'>" . $row['graduate_level_type'] . "</td>";
+                                                echo "<td name='graduate_level_type'>" . $row['graduate_level'] . "</td>";
                                                 echo "<td name='graduate_level_type'>" . $row['graduate_level_code'] . "</td>";
 
                                                 echo "<td><button class='btn btn-success' data-toggle='modal' data-target='#doc-".$row['graduate_level_id']."' type='button' name='save_button' value='".$row['graduate_level_id']."'>Edit</button>
@@ -126,11 +124,15 @@
                                                                             <input readonly class='form-control' name='id' id='doc-".$row['graduate_level_id']."' value='".$row['graduate_level_id']."'>
                                                                         </div>
                                                                         <div class='px-5 pb-3'>
-                                                                            <Label>Graduate Level Type</label>
+                                                                            <Label>Level of Studies</label>
                                                                             <input class='form-control' id='".$row['graduate_level_type']."' value='".$row['graduate_level_type']."' name='graduate_level_type' required>
                                                                         </div>
                                                                         <div class='px-5 pb-3'>
-                                                                            <Label>Graduate Level code</label>
+                                                                            <Label>MQF Level</label>
+                                                                            <input class='form-control' id='".$row['graduate_level']."' value='".$row['graduate_level']."' name='graduate_level' required>
+                                                                        </div>
+                                                                        <div class='px-5 pb-3'>
+                                                                            <Label>Reference Number</label>
                                                                             <input class='form-control' id='".$row['graduate_level_code']."' value='".$row['graduate_level_code']."' name='graduate_level_code' required>
                                                                         </div>
                                                                         <div class='modal-footer'>
@@ -273,7 +275,7 @@
             $('#dataTable thead tr').clone(true).appendTo( '#dataTable thead' );
 
             $('#dataTable thead tr:eq(0) th').each( function (i){
-                if(i>1){
+                if(i>2){
                     $(this).html( '' );
                 }
 
@@ -373,12 +375,13 @@
     //session_start(); // Starting Session
     $error = ''; // Variable To Store Error Message
     if (isset($_POST['update_btn'])) {
-        $sql = "UPDATE graduate SET graduate_level_type=?, graduate_level_code=? WHERE graduate_level_id=?";
+        $sql = "UPDATE graduate SET graduate_level_type=?, graduate_level_code=?, graduate_level=? WHERE graduate_level_id=?";
         $stmnt = $conn->prepare($sql);
-        $stmnt->bind_param('ssi',$graduate_level_type, $graduate_level_code, $id);
+        $stmnt->bind_param('ssii',$graduate_level_type, $graduate_level_code, $graduate_level, $id);
         $id = $_POST['id'];
         $graduate_level_type = $_POST['graduate_level_type'];
         $graduate_level_code = sprintf('%03d', $_POST['graduate_level_code']);
+        $graduate_level = $_POST['graduate_level'];
         $status = $stmnt->execute();
         if($status === false){
             if (mysqli_errno($conn) == 1062) {
@@ -406,6 +409,7 @@
                     });
                 </script>
             <?php
+            echo $conn->error;
         }
         mysqli_close($conn); // Closing Connection 
     }

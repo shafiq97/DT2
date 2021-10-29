@@ -15,7 +15,6 @@
     else{
         $doc['id'] = sprintf('%04d', $doc['id']+1);
     }
-
     // echo $doc['id'];
 ?>
 
@@ -73,7 +72,7 @@
                                                 class="form-control" 
                                                 id="dcm" 
                                                 name="submission_to" 
-                                                value="DCM" 
+                                                value="Senate" 
                                                 readonly 
                                                 autocomplete="off"
                                             >

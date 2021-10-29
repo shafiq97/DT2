@@ -77,7 +77,7 @@
         include '../../includes/connect.php';
 
         // prepare and bind
-        $stmt = $conn->prepare("INSERT INTO centre_of_studies (cos_name) VALUES (?)");
+        $stmt = $conn->prepare("INSERT INTO centre_of_studies (cos_name, cos_code) VALUES (?,?)");
 
         if($stmt === false){
             ?>
@@ -93,10 +93,11 @@
             <?php
         }
         else{
-            $stmt->bind_param("s", $cos_name);
+            $stmt->bind_param("ss", $cos_name, $cos_name);
 
             // set parameter
             $cos_name = $_POST['cos_name'];
+            $cos_code = $_POST['cos_name'];
 
             // execute
             $stmt->execute();
@@ -166,14 +167,14 @@
         include '../../includes/connect.php';
 
         // prepare and bind
-        $stmt = $conn->prepare("INSERT INTO graduate (graduate_level_type, graduate_level_code) VALUES (?,?)");
+        $stmt = $conn->prepare("INSERT INTO graduate (graduate_level_type, graduate_level_code, graduate_level) VALUES (?,?,?)");
 
         if($stmt === false){
             
             ?>
                 <script>
                     swal({
-                        title: "Error inserting graduate type",
+                        title: "Error inserting level of studies",
                         text: "Please contact admin",
                         icon: "error"
                     }).then(function() {
@@ -184,28 +185,43 @@
         }
         else{
 
-            $stmt->bind_param("ss", $graduate_level_type, $graduate_level_code);
+            $stmt->bind_param("ssi", $graduate_level_type, $graduate_level_code, $graduate_level);
 
             // set parameter
             $graduate_level_type = $_POST['graduate_level_type'];
             $graduate_level_code = sprintf('%03d', $_POST['graduate_level_code']);
+            $graduate_level = $_POST['graduate_level'];
 
             // execute
             $stmt->execute();
-            $stmt->close();
-            $conn->close();
-
-            ?>
+            if (mysqli_errno($conn) == 1062) {
+                ?>
                 <script>
                     swal({
-                        title: "Record inserted",
-                        text: "",
-                        icon: "success"
+                        title: "Duplicate entry found",
+                        icon: "error"
                     }).then(function() {
                         window.location = "graduate_view.php";
                     });
                 </script>
             <?php
+            }
+            else{
+                ?>
+                    <script>
+                        swal({
+                            title: "Record inserted",
+                            text: "",
+                            icon: "success"
+                        }).then(function() {
+                            window.location = "graduate_view.php";
+                        });
+                    </script>
+                <?php
+                echo $conn->error;
+                $stmt->close();
+                $conn->close();
+            }
         }
     }
 
@@ -378,6 +394,50 @@
                         icon: "success"
                     }).then(function() {
                         window.location = "action_to_be_taken_view.php";
+                    });
+                </script>
+            <?php
+        }
+    }
+
+    if (isset($_POST['add_status_submit'])) {
+        include '../../includes/connect.php';
+
+        // prepare and bind
+        $stmt = $conn->prepare("INSERT INTO status (status_name) VALUES (?)");
+
+        if($stmt === false){
+            ?>
+                <script>
+                    swal({
+                        title: "Error inserting status",
+                        text: "Please contact admin",
+                        icon: "error"
+                    }).then(function() {
+                        window.location = "add_status.php";
+                    });
+                </script>
+            <?php
+        }
+        else{
+            $stmt->bind_param("s", $status_name);
+
+            // set parameter
+            $status_name = $_POST['status_name'];
+
+            // execute
+            $stmt->execute();
+            echo $conn->error;
+            $stmt->close();
+            $conn->close();
+            ?>
+                <script>
+                    swal({
+                        title: "Record inserted",
+                        text: "",
+                        icon: "success"
+                    }).then(function() {
+                        window.location = "status_view.php";
                     });
                 </script>
             <?php

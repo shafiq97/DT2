@@ -50,7 +50,7 @@
 
     <!-- Custom styles for this template -->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css"> -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css">
     
     <!-- Custom styles for this page -->
@@ -65,173 +65,23 @@
 </head>
 
 <body id="page-top">
-
     <!-- Page Wrapper -->
     <div id="wrapper">
         <?php include 'sidebar.php' ?>
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-
             <!-- Main Content -->
             <div id="content">
-
-                <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light black topbar mb-4 static-top shadow">
-
-                    <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
-
-                    <!-- Topbar Search -->
-                    <div>
-                      Document Tracking System
-                    </div>
-
-                    <!-- Topbar Navbar -->
-                    <ul class="navbar-nav ml-auto black">
-
-                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                        <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-search fa-fw"></i>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                aria-labelledby="searchDropdown">
-                                <form class="form-inline mr-auto w-100 navbar-search">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Search for..." aria-label="Search"
-                                            aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
-                                                <i class="fas fa-search fa-sm"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </li>
-
-
-                        <!-- Nav Item - Alerts -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-bell fa-fw"></i>
-                                <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter"><?php echo $row?></span>
-                            </a>
-                            <!-- Dropdown - Alerts -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="alertsDropdown">
-                                <h6 class="dropdown-header">
-                                    Alerts Center
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="index.php">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-primary">
-                                            <i class="fas fa-file-alt text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <?php 
-                                            include '../../includes/connect.php';
-                                            $query6 = "SELECT * FROM documents WHERE (doc_responsibility = '".$_SESSION['name']."') AND (doc_status = 'Pending')";
-                                            $result6 = mysqli_query($conn,$query6);
-                                            echo"<div class='small text-gray-500'> ".date('D\, d-M-Y')."</div>";
-                                            echo"<span class='font-weight-bold'>You have ".$row." pending documents </span>";
-                                            
-                                            while ($row6 = mysqli_fetch_array($result6)) {
-                                                echo $row6['doc_name']; 
-                                                echo "<br>";
-                                                echo $row6['doc_comment']; 
-                                                echo "<br><br>";
-                                            }
-                                        ?>
-                                        
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-                            </div>
-                        </li>
-
-                        <!-- Nav Item - Messages -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-envelope fa-fw"></i>
-                                <!-- Counter - Messages -->
-                                <span class="badge badge-danger badge-counter"><?php echo $count?></span>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="messagesDropdown">
-                                <h6 class="dropdown-header">
-                                    Announcement for today
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="announcement.php">
-                                    <div class="font-weight-bold">
-                                    <?php
-                                        $today_date1 = date("Y-m-d");
-
-                                        $query3 = "SELECT `date`,`message` FROM announcement ORDER BY `date` DESC";
-                                        $result3 = mysqli_query($conn,$query3);
-                                        
-                                        while ($row3 = mysqli_fetch_array($result3)) {
-                                            $announcement_date1 = date("Y-m-d",strtotime($row3['date']));
-                                            if($today_date1 === $announcement_date1){
-                                                echo $today_date1;
-                                                echo"<div class='text-truncate'>".$row3['message']."</div><br>";
-                                            }
-
-                                            //$date = $row['date'];
-                                            //$formatted_date = strtotime($date);
-
-                                            //echo "<td id='".$row['login']."'>". $row['login'] ."</td>";
-                                        }
-                                    ?>
-                                    </div>
-                                </a>
-                            </div>
-                        </li>
-
-                        <div class="topbar-divider d-none d-sm-block"></div>
-
-                        <!-- Nav Item - User Information -->
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['name']?></span>
-                                <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
-                            </a>
-                            <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
-                                </a>
-                            </div>
-                        </li>
-
-                    </ul>
-
-                </nav>
-                <!-- End of Topbar -->
+                <?php include 'topbar.php' ?>
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid" id="container-fluid">
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3 black">
+                        <div class="card-header py-3 blue">
                             <div>
-                                <h6 class="m-0 font-weight-bold text-white float-left">View Documents</h6>
+                                <h6 class="m-0 font-weight-bold text-white float-left blue">View Documents</h6>
                             </div> 
                         </div>
                         <div class="card-body">
@@ -239,13 +89,13 @@
                                 <table class="table table-bordered hover" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <!-- <th>Doc ID</th> -->
-                                            <th>Doc Name</th>
-                                            <th>Sender</th>
-                                            <th>Assignee</th>
+                                            <th>Ref No.</th>
+                                            <th>Submission</th>
+                                            <th>Doc Title</th>
+                                            <th>Received by</th>
+                                            <th>Assign to</th>
                                             <th>Status</th>
-                                            <th>Received</th>
-                                            <th>Due Date</th>
+                                            <th>Received Date</th>
                                             <th>View</th>
                                             <th>Edit</th>
                                             <th>Track</th>
@@ -253,13 +103,13 @@
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <!-- <th>Doc ID</th> -->
-                                            <th>Doc Name</th>
-                                            <th>Sender</th>
-                                            <th>Assignee</th>
+                                            <th>Ref No.</th>
+                                            <th>Submission</th>
+                                            <th>Doc Title</th>
+                                            <th>Received by</th>
+                                            <th>Assign to</th>
                                             <th>Status</th>
-                                            <th>Received</th>
-                                            <th>Due Date</th>
+                                            <th>Received Date</th>
                                             <th>View</th>
                                             <th>Edit</th>
                                             <th>Track</th> 
@@ -279,37 +129,47 @@
                                             
                                             while ($row = mysqli_fetch_array($result)) {
 
-                                                $date = $row['doc_receive'];
+                                                $date = $row['date_receive'];
                                                 $formatted_date = strtotime($date);
 
                                                 $date2 = $row['doc_due'];
                                                 $formatted_date2 = strtotime($date2);
                                               
                                                 echo "<tr>";
-                                                echo "<form method='post' target='_blank' action='track.php'>";
+                                                // echo "<form method='post' target='_blank' action='track.php'>";
                                                 // echo "<td name=doc_id>" . $row['id'] . "</td>";
+                                                echo "<td name='reference_number'>" . $row['reference_number'] . "</td>";
+                                                echo "<td name='submission_to'>" . $row['submission_to'] . "</td>";
                                                 echo "<td name='doc_name'>" . $row['doc_name'] . "</td>";
-                                                echo "<td name='doc_sender'>" . $row['doc_sender'] . "</td>";
-                                                echo "<td>". $row['doc_responsibility'] ."</td>";
-                                                echo "<td>". $row['doc_comment'] ."</td>";
+                                                echo "<td name='doc_sender'>" . $row['received_by'] . "</td>";
+                                                echo "<td>". $row['assign_to'] ."</td>";
+                                                echo "<td>". $row['doc_status'] ."</td>";
                                                 echo "<td>" . date("D\, d-M-Y", $formatted_date) . "</td>";
-                                                echo "<td>" . date("D\, d-M-Y", $formatted_date2) . "</td>";
                                                 //echo "<td><button type='submit' name='save_button' value='".$row['doc_due']."'>Download</button></td>";
 
+                                                // if (filter_var($row['doc_location'], FILTER_VALIDATE_URL) === FALSE) {
+                                                //     echo"<td><button class='btn btn-danger' name='link_error' value='".$row['doc_location']."'>View</button></td>";
+                                                // }
+                                                // else{
+                                                //     echo"<td><a href='".$row['doc_location']."' target='_blank' class='btn btn-primary' disable>View</a></td>";
+                                                // }
                                                 if (filter_var($row['doc_location'], FILTER_VALIDATE_URL) === FALSE) {
-                                                    echo"<td><button class='btn btn-danger' name='link_error' value='".$row['doc_location']."'>View</button></td>";
+                                                    echo"<td><button class='btn btn-danger' name=' value=''>View</button></td>";
                                                 }
                                                 else{
-                                                    echo"<td><a href='".$row['doc_location']."' target='_blank' class='btn btn-primary'>View</a></td>";
+                                                    echo"<td><a href='#' target='_blank' class='btn btn-primary'>View</a></td>";
                                                 }
 
-                                                echo "<td><button class='btn btn-success' data-toggle='modal' data-target='#doc-".$row['id']."' type='button' name='save_button' value='".$row['id']."'>Edit</button>
-                                                        </td>";
+                                                // echo "<td><button class='btn btn-success' data-toggle='modal' data-target='#doc-".$row['id']."' type='button' name='save_button' value='".$row['id']."'>Edit</button>
+                                                //         </td>";
+
+                                                echo "<td><button class='btn btn-success' data-toggle='modal' data-target='' type='button' name='save_button' value='".$row['id']."'>Edit</button>
+                                                     </td>";
 
                                                 echo "<td><button class='btn btn-dark' type='submit' name='trackBtn' value='".$row['id']."'>Track</button>
                                                         </td>";
 
-                                                echo "</form>";
+                                                // echo "</form>";
                                                 echo "</tr>";
                                                 
                                                 echo"<div id='doc-".$row['id']."' class='modal fade' role='dialog'>
@@ -470,13 +330,13 @@
                                                                         <div class='px-5 pb-3'>
                                                                             <Label>Receive On</label>
                                                                             <input name='date_receive' type='datetime-local' class='form-control' value=
-                                                                            '".substr_replace($row['doc_receive'], 'T', 10).substr($row['doc_receive'],11)."'>
+                                                                            '".$row['doc_receive']."'>
                                                                         </div>
 
                                                                         <div class='px-5 pb-3'>
                                                                             <Label>Due Date</label>
                                                                             <input name='due_date' type='datetime-local' class='form-control' value=
-                                                                            '".substr_replace($row['doc_due'], 'T', 10).substr($row['doc_due'],11)."'>
+                                                                            '".$row['doc_due']."'>
                                                                         </div>
 
                                                                         <div class='px-5 pb-3'>
@@ -629,103 +489,105 @@
         //var tbl = $('#dataTable');
         $(document).ready(function() {
             
+            $('#dataTable').DataTable();
+
             // Setup - add a text input to each footer cell
-            $('#dataTable thead tr').clone(true).appendTo( '#dataTable thead' );
+            // $('#dataTable thead tr').clone(true).appendTo( '#dataTable thead' );
 
-            $('#dataTable thead tr:eq(0) th').each( function (i){
-                if(i>5){
-                    $(this).html( '' );
-                }
+            // $('#dataTable thead tr:eq(0) th').each( function (i){
+            //     if(i>6){
+            //         $(this).html( '' );
+            //     }
 
-                else{
-                    var title = $(this).text();
-                    $(this).html( '<input class="form-control" type="text" placeholder="Search '+title+'" />' );
-                    $( 'input', this ).on( 'keyup change', function (){
-                        if ( table.column(i).search() !== this.value ){
-                            table
-                                .column(i)
-                                .search( this.value )
-                                .draw();
-                        }
-                    });
-                }
-            });
+            //     else{
+            //         var title = $(this).text();
+            //         $(this).html( '<input class="form-control" type="text" placeholder="Search '+title+'" />' );
+            //         $( 'input', this ).on( 'keyup change', function (){
+            //             if ( table.column(i).search() !== this.value ){
+            //                 table
+            //                     .column(i)
+            //                     .search( this.value )
+            //                     .draw();
+            //             }
+            //         });
+            //     }
+            // });
 
-            $('#dataTable').DataTable().destroy();
+            // $('#dataTable').DataTable().destroy();
      
-            var table = $('#dataTable').DataTable({
-                initComplete: function (){ 
-                    this.api().columns().every( function (i) {
-                        if(i<=6){
-                            var column = this;
-                            var select = $('<select><option value=""></option></select>')
-                                .appendTo( $(column.footer()).empty() )
-                                .on( 'change', function () {
-                                    var val = $.fn.dataTable.util.escapeRegex($(this).val());
-                                    column
-                                        .search( val ? '^'+val+'$' : '', true, false )
-                                        .draw();
-                                })
+            // var table = $('#dataTable').DataTable({
+            //     initComplete: function (){ 
+            //         this.api().columns().every( function (i) {
+            //             if(i<=6){
+            //                 var column = this;
+            //                 var select = $('<select><option value=""></option></select>')
+            //                     .appendTo( $(column.footer()).empty() )
+            //                     .on( 'change', function () {
+            //                         var val = $.fn.dataTable.util.escapeRegex($(this).val());
+            //                         column
+            //                             .search( val ? '^'+val+'$' : '', true, false )
+            //                             .draw();
+            //                     })
                             
-                                column.data().unique().sort().each( function ( d, j ) {
-                                    select.append( '<option value="'+d+'">'+d+'</option>' )
-                                });
-                        }
-                    });
-                }
-            });
+            //                     column.data().unique().sort().each( function ( d, j ) {
+            //                         select.append( '<option value="'+d+'">'+d+'</option>' )
+            //                     });
+            //             }
+            //         });
+            //     }
+            // });
 
-            $('#dataTable').DataTable().destroy();
+            // $('#dataTable').DataTable().destroy();
 
-            $('#dataTable').DataTable({
-                "order": [[ 3, "asc" ]],
-                "pageLength": 10,
-                dom: 'Bfrtip',
-                buttons: [
-                    {
-                        extend: 'pdf',
-                        exportOptions:{
-                            columns: [ 0, 1, 2, 3, 4, 5, 6 ]
-                        }
-                        /*customize : function(doc){
-                            var colCount = new Array();
-                            $(tbl).find('tbody tr:first-child td').each(function(){
-                                if($(this).attr('colspan')){
-                                    for(var i=1;i<=$(this).attr('colspan');$i++){
-                                        colCount.push('*');
-                                    }
-                                }else{ colCount.push('*'); }
-                            });
-                            doc.content[1].table.widths = colCount;
-                        }*/
-                    },
+            // $('#dataTable').DataTable({
+            //     "order": [[ 3, "asc" ]],
+            //     "pageLength": 10,
+            //     dom: 'Bfrtip',
+            //     buttons: [
+            //         {
+            //             extend: 'pdf',
+            //             exportOptions:{
+            //                 columns: [ 0, 1, 2, 3, 4, 5, 6 ]
+            //             }
+            //             /*customize : function(doc){
+            //                 var colCount = new Array();
+            //                 $(tbl).find('tbody tr:first-child td').each(function(){
+            //                     if($(this).attr('colspan')){
+            //                         for(var i=1;i<=$(this).attr('colspan');$i++){
+            //                             colCount.push('*');
+            //                         }
+            //                     }else{ colCount.push('*'); }
+            //                 });
+            //                 doc.content[1].table.widths = colCount;
+            //             }*/
+            //         },
 
-                    {
-                        extend: 'csv',
-                        exportOptions:{
-                            columns: [ 0, 1, 2, 3, 4, 5, 6 ]
-                        }
-                    },
+            //         {
+            //             extend: 'csv',
+            //             exportOptions:{
+            //                 columns: [ 0, 1, 2, 3, 4, 5, 6 ]
+            //             }
+            //         },
 
-                    {
-                        extend: 'print',
-                        exportOptions: {
-                            //rows: ':visible',
-                            columns: [ 0, 1, 2, 3, 4, 5, 6 ],
-                            //columns: ':visible'
-                        },
-                    },
+            //         {
+            //             extend: 'print',
+            //             exportOptions: {
+            //                 //rows: ':visible',
+            //                 columns: [ 0, 1, 2, 3, 4, 5, 6 ],
+            //                 //columns: ':visible'
+            //             },
+            //         },
 
-                    /*{
-                        extend: 'colvis',
-                        exportOptions:{
-                            columns: [ 0, 1, 2, 3, 4 ]
-                        }
-                    }*/
-                ],
-                responsive: true,
-            })
-            table.buttons().container().appendTo( '#dataTable_wrapper .col-sm-6:eq(1)' );
+            //         /*{
+            //             extend: 'colvis',
+            //             exportOptions:{
+            //                 columns: [ 0, 1, 2, 3, 4 ]
+            //             }
+            //         }*/
+            //     ],
+            //     responsive: true,
+            // })
+            // table.buttons().container().appendTo( '#dataTable_wrapper .col-sm-6:eq(1)' );
         });
     </script>
 

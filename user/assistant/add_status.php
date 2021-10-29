@@ -39,20 +39,16 @@
                                     <!-- Card Header - Accordion -->
                                     <a href="#collapseCardExample" class="d-block card-header py-3 blue" data-toggle="collapse"
                                         role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                                        <h6 class="font-weight-bold text-white px-4">Add Centre of Studies:<span> * Required Fill </span></h6>
+                                        <h6 class="font-weight-bold text-white px-4">Add Status:<span> * Required Fill </span></h6>
                                     </a>
                                     <!-- Card Content - Collapse -->
                                     <div class="collapse show" id="collapseCardExample">
                                         <div class="form-group px-5 pt-2">
-                                            <label for="cos_name">Centre of Studies *</label>
-                                            <input type="text" class="form-control" id="cos_name" name="cos_name" required autocomplete="off">
+                                            <label for="graduate_name">Status Name *</label>
+                                            <input type="text" class="form-control" id="status_name" name="status_name" required autocomplete="off">
                                         </div>
                                         <div class="form-group px-5 pt-2">
-                                            <label for="cos_code">Reference Code *</label>
-                                            <input type="text" class="form-control" id="cod_code" name="cos_code" required autocomplete="off" placeholder="KICT">
-                                        </div>
-                                        <div class="form-group px-5 pt-2">
-                                            <button type="submit" class="btn uia" style="color:white" value="Add" name="add_cos_submit">Add</button>
+                                            <button type="submit" class="btn uia" style="color:white" value="Add" name="add_status_submit">Add</button>
                                         </div>
                                     </div>     
                                 </div>

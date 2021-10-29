@@ -52,12 +52,12 @@
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 blue">
                             <div>
-                                <h6 class="m-0 font-weight-bold text-white float-left">Action to be Taken</h6>
+                                <h6 class="m-0 font-weight-bold text-white float-left">Status</h6>
                             </div> 
                         </div>
 
                         <div class="d-flex justify-content-left">
-                            <a href="add_action.php" class="btn btn-primary" style="width: 20%; margin-left: 20px;">Add Action to be Taken</a>
+                            <a href="add_status.php" class="btn btn-primary" style="width: 20%; margin-left: 20px;">Add Status</a>
                         </div>
 
                         <div class="card-body">
@@ -66,8 +66,8 @@
                                     <thead>
                                         <tr>
                                             <!-- <th>Doc ID</th> -->
-                                            <th>Action ID</th>
-                                            <th>Action Name</th>
+                                            <th>Status ID</th>
+                                            <th>Status Name</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
                                         </tr>
@@ -75,8 +75,8 @@
                                     <tfoot>
                                         <tr>
                                             <!-- <th>Doc ID</th> -->
-                                            <th>Action ID</th>
-                                            <th>Action Name</th>
+                                            <th>Status ID</th>
+                                            <th>Status Name</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
                                         </tr>
@@ -86,7 +86,7 @@
                                         <?php 
                                             include '../../includes/connect.php';
 
-                                            $sql = "SELECT * FROM action_to_be_taken ORDER BY action_name";
+                                            $sql = "SELECT * FROM status ORDER BY status_name";
 
                                             $result = mysqli_query($conn,$sql);
                                             
@@ -94,37 +94,37 @@
  
                                                 echo "<tr>";
                                                 echo "<form method='post' id='myFormID'>";
-                                                echo "<input type='hidden' name='action_id' value=".$row['action_id']."> ";
-                                                echo "<td>" . $row['action_id'] . "</td>";
-                                                echo "<td name='action_name'>" . $row['action_name'] . "</td>";
+                                                echo "<input type='hidden' name='status_id' value=".$row['status_id']."> ";
+                                                echo "<td>" . $row['status_id'] . "</td>";
+                                                echo "<td name='status_name'>" . $row['status_name'] . "</td>";
 
-                                                echo "<td><button class='btn btn-success' data-toggle='modal' data-target='#doc-".$row['action_id']."' type='button' name='save_button' value='".$row['action_id']."'>Edit</button>
+                                                echo "<td><button class='btn btn-success' data-toggle='modal' data-target='#doc-".$row['status_id']."' type='button' name='save_button' value='".$row['status_id']."'>Edit</button>
                                                         </td>";
 
-                                                echo "<td><button class='btn btn-danger' data-toggle='modal' data-target='#doc_dlt-".$row['action_id']."' type='button' name='delete_btn'  value='".$row['action_id']."'>Delete</button>
+                                                echo "<td><button class='btn btn-danger' data-toggle='modal' data-target='#doc_dlt-".$row['status_id']."' type='button' name='delete_btn'  value='".$row['status_id']."'>Delete</button>
                                                         </td>";
 
                                                 echo "</form>";
                                                 echo "</tr>";
                                                 
-                                                echo"<div id='doc-".$row['action_id']."' class='modal fade' role='dialog'>
+                                                echo"<div id='doc-".$row['status_id']."' class='modal fade' role='dialog'>
                                                         <div class='modal-dialog'>
                                                             <!-- Modal content-->
                                                             <div class='modal-content'>
                                                                 <div class='modal-header'>    
-                                                                    <h4 class='modal-title'>Update Action to be Taken</h4>
+                                                                    <h4 class='modal-title'>Update Status</h4>
                                                                     <button type='button' class='close' data-dismiss='modal'>&times;</button>
                                                                 </div>
 
                                                                 <div class='modal-body'>
                                                                     <form class='form-group' method='post'>
                                                                         <div class='px-5 pb-3'>
-                                                                            <Label>Action ID</label>
-                                                                            <input readonly class='form-control' name='id' id='doc-".$row['action_id']."' value='".$row['action_id']."'>
+                                                                            <Label>Status ID</label>
+                                                                            <input readonly class='form-control' name='id' id='doc-".$row['status_id']."' value='".$row['status_id']."'>
                                                                         </div>
                                                                         <div class='px-5 pb-3'>
-                                                                            <Label>Action Name Type</label>
-                                                                            <input class='form-control' id='".$row['action_name']."' value='".$row['action_name']."' name='action_name' required>
+                                                                            <Label>Status Name Type</label>
+                                                                            <input class='form-control' id='".$row['status_name']."' value='".$row['status_name']."' name='status_name' required>
                                                                         </div>
                                                                         <div class='modal-footer'>
                                                                             <button type='submit' class='btn btn-default' name='update_btn'>Update</button>
@@ -136,14 +136,14 @@
                                                         </div>
                                                     </div>";
 
-                                                    echo"<div id='doc_dlt-".$row['action_id']."' class='modal fade' role='dialog'>
+                                                    echo"<div id='doc_dlt-".$row['status_id']."' class='modal fade' role='dialog'>
                                                         <div class='modal-dialog'>
                                                             <!-- Modal content-->
                                                             <div class='modal-content'>
                                                                 <div class='modal-body'>
                                                                     <form class='form-group' method='post'>
-                                                                        <input type='hidden' value='".$row['action_id']."' name='id' >
-                                                                        <p> ".$row['action_name']." </p>
+                                                                        <input type='hidden' value='".$row['status_id']."' name='id' >
+                                                                        <p> ".$row['status_name']." </p>
                                                                         <div class='modal-footer'>
                                                                             <button type='submit' class='btn btn-danger' name='delete_btn'>Delete</button>
                                                                             <button type='button' class='btn btn-default' data-dismiss='modal'>Cancel</button>
@@ -366,11 +366,11 @@
     //session_start(); // Starting Session
     $error = ''; // Variable To Store Error Message
     if (isset($_POST['update_btn'])) {
-        $sql = "UPDATE action_to_be_taken SET action_name=? WHERE action_id=?";
+        $sql = "UPDATE status SET status_name=? WHERE status_id=?";
         $stmnt = $conn->prepare($sql);
-        $stmnt->bind_param('si',$action_name,$id);
+        $stmnt->bind_param('si',$status_name,$id);
         $id = $_POST['id'];
-        $action_name = $_POST['action_name'];
+        $status_name = $_POST['status_name'];
         $status = $stmnt->execute();
         if($status === false){
             if (mysqli_errno($conn) == 1062) {
@@ -380,7 +380,7 @@
                         title: "Duplicate entry found",
                         icon: "error"
                     }).then(function() {
-                        window.location = "action_to_taken_view.php";
+                        window.location = "status_view.php";
                     });
                 </script>
             <?php
@@ -394,7 +394,7 @@
                         title: "Record updated successfully",
                         icon: "success"
                     }).then(function() {
-                        window.location = "action_to_be_taken_view.php";
+                        window.location = "status_view.php";
                     });
                 </script>
             <?php
@@ -402,7 +402,7 @@
         mysqli_close($conn); // Closing Connection 
     }
     else if (isset($_POST['delete_btn'])) {
-        $sql = "DELETE FROM action_to_taken WHERE action_id=?";
+        $sql = "DELETE FROM status WHERE status_id=?";
         $stmnt = $conn->prepare($sql);
         $stmnt->bind_param('i', $id);
         $id = $_POST['id'];
@@ -420,7 +420,7 @@
                         title: "Record deleted successfully",
                         icon: "success"
                     }).then(function() {
-                        window.location = "action_to_be_taken_view.php";
+                        window.location = "status_view.php";
                     });
                 </script>
             <?php
